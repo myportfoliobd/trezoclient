@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Azwad Leather | এডমিন ড্যাশবোর্ড</title>
+  <title>Ghash Foring | এডমিন ড্যাশবোর্ড</title>
   
   <!-- Tailwind CSS & FontAwesome -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   
-  <!-- Fonts: Hind Siliguri & Inter -->
+  <!-- Fonts: Hind Siliguri, Outfit & Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
 
   <script>
     tailwind.config = {
@@ -20,7 +20,23 @@
         extend: {
           fontFamily: {
             bangla: ['"Hind Siliguri"', 'sans-serif'],
-            sans: ['"Inter"', '"Hind Siliguri"', 'sans-serif']
+            sans: ['"Inter"', '"Hind Siliguri"', 'sans-serif'],
+            brand: ['"Outfit"', 'sans-serif']
+          },
+          colors: {
+            gfSky: {
+              50: '#F0F9FF',
+              100: '#E0F2FE',
+              200: '#BAE6FD',
+              300: '#7DD3FC',
+              400: '#38BDF8',
+              500: '#0EA5E9',
+              600: '#0284C7',
+              700: '#0369A1',
+              800: '#075985',
+              900: '#0C4A6E',
+              950: '#082F49'
+            }
           }
         }
       }
@@ -28,11 +44,11 @@
   </script>
 
   <style>
-    body { font-family: 'Hind Siliguri', 'Inter', sans-serif; background-color: #f8fafc; }
+    body { font-family: 'Hind Siliguri', 'Inter', sans-serif; background-color: #f0f7fc; }
     .num { font-family: 'Inter', 'Hind Siliguri', sans-serif; }
     ::-webkit-scrollbar { width: 5px; height: 5px; }
-    ::-webkit-scrollbar-track { background: #f1f5f9; }
-    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+    ::-webkit-scrollbar-track { background: #e0f2fe; }
+    ::-webkit-scrollbar-thumb { background: #38bdf8; border-radius: 4px; }
     .filter-card { transition: all 0.2s ease; cursor: pointer; }
     .filter-card:active { transform: scale(0.97); }
   </style>
@@ -42,18 +58,18 @@
 
   <!-- ================= 🔐 AUTHENTICATION MODAL ================= -->
   <div id="loginGate" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md flex items-center justify-center z-[100] p-4 transition-all duration-300">
-    <div class="bg-white p-7 rounded-3xl max-w-sm w-full shadow-2xl border border-slate-100 text-center relative overflow-hidden">
-      <div class="w-14 h-14 bg-slate-100 border border-slate-200 text-slate-900 rounded-2xl flex items-center justify-center mx-auto text-2xl mb-3">
+    <div class="bg-white p-7 rounded-3xl max-w-sm w-full shadow-2xl border border-sky-100 text-center relative overflow-hidden">
+      <div class="w-14 h-14 bg-gradient-to-tr from-sky-600 to-sky-400 text-white rounded-2xl flex items-center justify-center mx-auto text-2xl mb-3 shadow-lg shadow-sky-500/20">
         <i class="fa-solid fa-shield-halved"></i>
       </div>
-      <h2 class="text-2xl font-black text-slate-900">এডমিন লগইন</h2>
+      <h2 class="text-2xl font-black text-slate-900">Ghash Foring এডমিন</h2>
       <p class="text-xs text-slate-500 mt-1 mb-5">ড্যাশবোর্ড অ্যাক্সেস করতে পাসওয়ার্ড দিন</p>
       
       <div class="space-y-3">
         <input type="password" id="adminPass" placeholder="পাসওয়ার্ড লিখুন..." 
           onkeydown="if(event.key==='Enter') checkAuth()"
-          class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-center font-medium text-slate-800 outline-none focus:border-slate-900 focus:bg-white transition" />
-        <button onclick="checkAuth()" class="w-full bg-slate-900 hover:bg-black active:scale-[0.98] text-white font-bold py-3 rounded-xl shadow-lg transition">
+          class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-center font-medium text-slate-800 outline-none focus:border-sky-600 focus:bg-white transition" />
+        <button onclick="checkAuth()" class="w-full bg-gradient-to-r from-sky-600 to-sky-700 hover:from-sky-700 hover:to-sky-800 active:scale-[0.98] text-white font-bold py-3 rounded-xl shadow-lg transition">
           প্রবেশ করুন <i class="fa-solid fa-arrow-right ml-1"></i>
         </button>
       </div>
@@ -66,10 +82,10 @@
   <!-- ================= 📦 SHIPPING STEPS MODAL ================= -->
   <div id="shippingModal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center z-50 p-4 hidden transition-all">
     <div class="bg-white rounded-3xl max-w-lg w-full shadow-2xl border border-slate-100 overflow-hidden flex flex-col">
-      <div class="bg-slate-900 text-white px-5 py-4 flex items-center justify-between">
+      <div class="bg-sky-950 text-white px-5 py-4 flex items-center justify-between">
         <div>
-          <div class="text-[11px] text-slate-400 font-semibold">অর্ডার শিপিং ট্র্যাকিং ও ধাপ</div>
-          <h3 class="font-extrabold text-base flex items-center gap-1.5" id="stepModalOrderId">#AL-0000</h3>
+          <div class="text-[11px] text-sky-300 font-semibold">Ghash Foring শিপিং ট্র্যাকিং ও ধাপ</div>
+          <h3 class="font-extrabold text-base flex items-center gap-1.5" id="stepModalOrderId">#GS-000000</h3>
         </div>
         <button onclick="closeShippingModal()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-sm transition">
           <i class="fa-solid fa-xmark"></i>
@@ -77,13 +93,13 @@
       </div>
 
       <div class="p-5 space-y-5">
-        <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200 text-xs flex justify-between items-center">
+        <div class="bg-sky-50/70 p-3.5 rounded-2xl border border-sky-100 text-xs flex justify-between items-center">
           <div>
             <div class="font-bold text-slate-900" id="stepModalCustomer">Customer Name</div>
             <div class="text-slate-500 text-[11px]" id="stepModalPhone">017XXXXXXXX</div>
           </div>
           <div class="text-right">
-            <div class="font-black num text-sm text-slate-900" id="stepModalTotal">৳০</div>
+            <div class="font-black num text-sm text-sky-950" id="stepModalTotal">৳০</div>
             <div id="stepModalCourierBadge"></div>
           </div>
         </div>
@@ -103,10 +119,10 @@
   <!-- ================= ➕ MANUAL ORDER MODAL ================= -->
   <div id="newOrderModal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center z-50 p-4 hidden transition-all">
     <div class="bg-white rounded-3xl max-w-lg w-full shadow-2xl border border-slate-100 overflow-hidden flex flex-col max-h-[92vh]">
-      <div class="bg-slate-900 text-white px-5 py-4 flex items-center justify-between">
+      <div class="bg-sky-950 text-white px-5 py-4 flex items-center justify-between">
         <div class="flex items-center gap-2">
           <span class="w-8 h-8 rounded-xl bg-white/10 flex items-center justify-center text-sm"><i class="fa-solid fa-cart-plus"></i></span>
-          <h3 class="font-bold text-sm">ম্যানুয়াল নতুন অর্ডার যোগ করুন</h3>
+          <h3 class="font-bold text-sm">নতুন ম্যানুয়াল অর্ডার (Ghash Foring)</h3>
         </div>
         <button onclick="closeNewOrderModal()" class="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-xs">
           <i class="fa-solid fa-xmark"></i>
@@ -116,60 +132,68 @@
       <form id="manualOrderForm" onsubmit="submitManualOrder(event)" class="p-5 overflow-y-auto space-y-3 text-xs sm:text-sm">
         <div>
           <label class="block font-bold text-slate-700 mb-1">কাস্টমারের নাম <span class="text-rose-500">*</span></label>
-          <input type="text" id="mCustName" required placeholder="যেমন: তানভীর আহমেদ" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 outline-none focus:border-slate-900 focus:bg-white" />
+          <input type="text" id="mCustName" required placeholder="যেমন: রাসেল আহমেদ" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 outline-none focus:border-sky-600 focus:bg-white" />
         </div>
 
         <div>
           <label class="block font-bold text-slate-700 mb-1">মোবাইল নাম্বার <span class="text-rose-500">*</span></label>
-          <input type="tel" id="mCustPhone" required placeholder="017xxxxxxxx" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 outline-none focus:border-slate-900 focus:bg-white" />
+          <input type="tel" id="mCustPhone" required placeholder="017xxxxxxxx" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 outline-none focus:border-sky-600 focus:bg-white" />
         </div>
 
         <div>
           <label class="block font-bold text-slate-700 mb-1">সম্পূর্ণ ডেলিভারি ঠিকানা <span class="text-rose-500">*</span></label>
-          <textarea id="mCustAddress" required rows="2" placeholder="বাসা/রোড, থানা, জেলা" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2 outline-none focus:border-slate-900 focus:bg-white resize-none"></textarea>
+          <textarea id="mCustAddress" required rows="2" placeholder="বাসা/রোড, থানা, জেলা (মিনিমাম ৫ অক্ষর)" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2 outline-none focus:border-sky-600 focus:bg-white resize-none"></textarea>
         </div>
 
-        <div class="grid grid-cols-2 gap-3">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div>
-            <label class="block font-bold text-slate-700 mb-1">প্যাকেজ বাছাই</label>
-            <select id="mPackage" onchange="updateManualPrice()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 outline-none focus:border-slate-900 font-semibold cursor-pointer">
-              <option value="ক্লাসিক ব্ল্যাক কালার বেল্ট" data-price="890">ব্ল্যাক — ৳৮৯০</option>
-              <option value="ডার্ক ব্রাউন কালার বেল্ট" data-price="890" selected>ডার্ক ব্রাউন — ৳৮৯০</option>
-              <option value="ব্ল্যাক + ব্রাউন কম্বো প্যাক" data-price="1490">কম্বো প্যাক — ৳১,৪৯০</option>
+            <label class="block font-bold text-slate-700 mb-1">প্যাকেজ / কম্বো বাছাই</label>
+            <select id="mPackage" onchange="updateManualPrice()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 outline-none focus:border-sky-600 font-semibold cursor-pointer">
+              <option value="5 Pcs Mega Combo Pack" data-price="1149" selected>৫ পিস মেগা কম্বো — ৳১,১৪৯</option>
+              <option value="4 Pcs Combo Pack" data-price="999">৪ পিস কম্বো প্যাক — ৳৯৯৯</option>
+              <option value="3 Pcs Combo Pack" data-price="770">৩ পিস ক্লাসিক কম্বো — ৳৭৭০</option>
+              <option value="3 Pcs Combo (PBN)" data-price="770">৩ পিস কম্বো (Pink+Blue+Navy) — ৳৭৭০</option>
+              <option value="3 Pcs Combo (NMA)" data-price="770">৩ পিস কম্বো (Navy+Maroon+Ash) — ৳৭৭০</option>
+              <option value="2 Pcs Combo Pack" data-price="549">২ পিস কাপল কম্বো — ৳৫৪৯</option>
+              <option value="2 Pcs Combo (PS)" data-price="549">২ পিস কম্বো (Pink+Sky) — ৳৫৪৯</option>
+              <option value="Travel Neck Pillow (Navy)" data-price="289">সিঙ্গেল পিলো (Navy Blue) — ৳২৮৯</option>
+              <option value="Travel Neck Pillow (Black)" data-price="289">সিঙ্গেল পিলো (Black) — ৳২৮৯</option>
+              <option value="Travel Neck Pillow (Maroon)" data-price="289">সিঙ্গেল পিলো (Maroon) — ৳২৮৯</option>
+              <option value="China Memory Foam (Black)" data-price="289">মেমোরি ফোম (Black) — ৳২৮৯</option>
+              <option value="China Memory Foam (Blue)" data-price="289">মেমোরি ফোম (Blue) — ৳২৮৯</option>
             </select>
           </div>
 
           <div>
             <label class="block font-bold text-slate-700 mb-1">ডেলিভারি এলাকা</label>
-            <select id="mArea" onchange="updateManualPrice()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 outline-none focus:border-slate-900 font-semibold cursor-pointer">
-              <option value="Free Delivery (সারা দেশে ফ্রি)" data-charge="0" selected>সারাদেশে ফ্রি (৳০)</option>
-              <option value="Dhaka City" data-charge="60">ঢাকা সিটি (৳৬০)</option>
-              <option value="Outside Dhaka" data-charge="120">ঢাকার বাইরে (৳১২০)</option>
+            <select id="mArea" onchange="updateManualPrice()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 outline-none focus:border-sky-600 font-semibold cursor-pointer">
+              <option value="Inside Dhaka (৳80)" data-charge="80" selected>ঢাকার ভেতরে (৳৮০)</option>
+              <option value="Outside Dhaka (৳120)" data-charge="120">ঢাকার বাইরে (৳১২০)</option>
             </select>
           </div>
         </div>
 
         <div>
           <label class="block font-bold text-slate-700 mb-1">সর্বমোট বিল (৳)</label>
-          <input type="text" id="mTotalBill" value="৳৮৯০" class="w-full bg-slate-100 text-slate-900 font-extrabold border border-slate-200 rounded-xl px-3.5 py-2.5 outline-none num text-base" />
+          <input type="text" id="mTotalBill" value="৳1229" class="w-full bg-slate-100 text-sky-950 font-black border border-slate-200 rounded-xl px-3.5 py-2.5 outline-none num text-base" />
         </div>
 
-        <button type="submit" id="createOrderBtn" class="w-full bg-slate-900 hover:bg-black active:scale-[0.98] text-white font-bold py-3 rounded-xl shadow-lg transition flex items-center justify-center gap-2 text-xs sm:text-sm mt-2">
+        <button type="submit" id="createOrderBtn" class="w-full bg-gradient-to-r from-sky-600 to-sky-700 hover:from-sky-700 hover:to-sky-800 active:scale-[0.98] text-white font-bold py-3 rounded-xl shadow-lg transition flex items-center justify-center gap-2 text-xs sm:text-sm mt-2">
           <i class="fa-solid fa-circle-check"></i> অর্ডার কনফার্ম ও সেভ করুন
         </button>
       </form>
     </div>
   </div>
 
-  <!-- ================= ⚙️ SETTINGS MODAL (DYNAMIC CLIENT CONFIG WITH META CAPI) ================= -->
+  <!-- ================= ⚙️ SETTINGS MODAL (DYNAMIC STORE CONFIG WITH META CAPI) ================= -->
   <div id="settingsModal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center z-50 p-4 hidden transition-all">
     <div class="bg-white rounded-3xl max-w-lg w-full shadow-2xl border border-slate-100 overflow-hidden flex flex-col max-h-[90vh]">
-      <div class="bg-slate-900 text-white px-5 py-4 flex items-center justify-between">
+      <div class="bg-sky-950 text-white px-5 py-4 flex items-center justify-between">
         <div class="flex items-center gap-2">
           <span class="w-8 h-8 rounded-xl bg-white/10 flex items-center justify-center text-sm"><i class="fa-solid fa-sliders"></i></span>
           <div>
-            <h3 class="font-bold text-sm">ক্লায়েন্ট কনফিগারেশন & সেটিংস</h3>
-            <p class="text-[10px] text-slate-400">আপনার নিজস্ব API, Meta CAPI ও Webhook সেট করুন</p>
+            <h3 class="font-bold text-sm">Ghash Foring কনফিগারেশন & সেটিংস</h3>
+            <p class="text-[10px] text-sky-300">API, Meta Pixel, CAPI ও SteadFast Webhook</p>
           </div>
         </div>
         <button onclick="closeSettingsModal()" class="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-xs">
@@ -180,10 +204,10 @@
       <form id="settingsForm" onsubmit="saveSettings(event)" class="p-5 overflow-y-auto space-y-3.5 text-xs sm:text-sm">
         
         <!-- Store Code Selector -->
-        <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200">
+        <div class="bg-sky-50/60 p-3.5 rounded-2xl border border-sky-100">
           <label class="block font-bold text-slate-800 mb-1">স্টোর কোড (Store Code)</label>
-          <input type="text" id="cfgStoreCode" value="AL" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 font-mono text-xs font-bold uppercase outline-none focus:border-slate-900" />
-          <p class="text-[10px] text-slate-400 mt-1">প্রতিটি ক্লায়েন্ট স্টোরের জন্য ইউনিক কোড (যেমন: AL, SB, TZ)</p>
+          <input type="text" id="cfgStoreCode" value="GS" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 font-mono text-xs font-bold uppercase outline-none focus:border-sky-600" />
+          <p class="text-[10px] text-slate-400 mt-1">Ghash Foring এর স্টোর কোড হলো <strong>GS</strong></p>
         </div>
 
         <!-- 🚚 SteadFast Webhook URL to Copy -->
@@ -203,30 +227,30 @@
         <!-- SteadFast API Credentials -->
         <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200 space-y-2.5">
           <div class="font-bold text-slate-800 flex items-center gap-1.5">
-            <i class="fa-solid fa-truck-fast text-slate-900"></i> SteadFast Courier API
+            <i class="fa-solid fa-truck-fast text-sky-700"></i> SteadFast Courier API
           </div>
           <div>
             <label class="block text-slate-600 text-[11px] font-semibold mb-1">SteadFast API Key</label>
-            <input type="text" id="cfgSfApiKey" placeholder="API Key লিখুন..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 font-mono text-xs outline-none focus:border-slate-900" />
+            <input type="text" id="cfgSfApiKey" placeholder="API Key লিখুন..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 font-mono text-xs outline-none focus:border-sky-600" />
           </div>
           <div>
             <label class="block text-slate-600 text-[11px] font-semibold mb-1">SteadFast Secret Key</label>
-            <input type="password" id="cfgSfSecretKey" placeholder="Secret Key লিখুন..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 font-mono text-xs outline-none focus:border-slate-900" />
+            <input type="password" id="cfgSfSecretKey" placeholder="Secret Key লিখুন..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 font-mono text-xs outline-none focus:border-sky-600" />
           </div>
         </div>
 
-        <!-- 🎯 Meta Pixel & CAPI Settings (Updated) -->
+        <!-- 🎯 Meta Pixel & CAPI Settings -->
         <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200 space-y-2.5">
           <div class="font-bold text-slate-800 flex items-center gap-1.5">
             <i class="fa-brands fa-facebook text-blue-600"></i> Meta Pixel & Conversions API (CAPI)
           </div>
           <div>
             <label class="block text-slate-600 text-[11px] font-semibold mb-1">Meta Pixel ID</label>
-            <input type="text" id="cfgMetaPixel" placeholder="যেমন: 628150683565093" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 font-mono text-xs outline-none focus:border-slate-900" />
+            <input type="text" id="cfgMetaPixel" placeholder="যেমন: 123456789012345" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 font-mono text-xs outline-none focus:border-sky-600" />
           </div>
           <div>
             <label class="block text-slate-600 text-[11px] font-semibold mb-1">CAPI Access Token</label>
-            <textarea id="cfgMetaAccessToken" rows="2" placeholder="EAAB... (Events Manager থেকে Generate Access Token নিন)" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 font-mono text-xs outline-none focus:border-slate-900 resize-none"></textarea>
+            <textarea id="cfgMetaAccessToken" rows="2" placeholder="EAAB... (Events Manager থেকে Generate Access Token নিন)" class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 font-mono text-xs outline-none focus:border-sky-600 resize-none"></textarea>
           </div>
         </div>
 
@@ -234,10 +258,10 @@
           <label class="block font-bold text-slate-800 mb-1 flex items-center gap-1.5">
             <i class="fa-solid fa-shield-halved text-amber-600"></i> BDCourier API Key
           </label>
-          <input type="text" id="cfgBdCourierKey" placeholder="BDCourier Key..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 font-mono text-xs outline-none focus:border-slate-900" />
+          <input type="text" id="cfgBdCourierKey" placeholder="BDCourier Key..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 font-mono text-xs outline-none focus:border-sky-600" />
         </div>
 
-        <button type="submit" id="saveCfgBtn" class="w-full bg-slate-900 hover:bg-black text-white font-bold py-3 rounded-xl shadow-lg transition flex items-center justify-center gap-2 text-xs sm:text-sm">
+        <button type="submit" id="saveCfgBtn" class="w-full bg-sky-900 hover:bg-sky-950 text-white font-bold py-3 rounded-xl shadow-lg transition flex items-center justify-center gap-2 text-xs sm:text-sm">
           <i class="fa-solid fa-floppy-disk"></i> সেটিংস সংরক্ষণ করুন
         </button>
       </form>
@@ -245,20 +269,29 @@
   </div>
 
   <!-- ================= 💻 DESKTOP LEFT SIDEBAR ================= -->
-  <aside class="w-64 bg-white border-r border-slate-200 flex-col shrink-0 min-h-screen p-4 hidden lg:flex">
+  <aside class="w-64 bg-white border-r border-sky-100 flex-col shrink-0 min-h-screen p-4 hidden lg:flex shadow-sm">
     <div class="flex items-center gap-2.5 px-2 py-3 mb-4">
-      <div class="w-10 h-10 rounded-xl bg-slate-900 text-white flex items-center justify-center text-xl font-bold shadow-sm">
-        AL
+      <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-sky-700 to-sky-500 text-white flex items-center justify-center text-lg font-black font-brand shadow-md shadow-sky-500/20">
+        GF
       </div>
       <div>
-        <h1 class="font-extrabold text-base text-slate-900 leading-tight">Azwad Leather</h1>
-        <p class="text-[10px] text-slate-400 font-medium">Smart Admin Portal</p>
+        <h1 class="font-extrabold text-base text-slate-900 leading-tight font-brand tracking-wide">Ghash Foring</h1>
+        <p class="text-[10px] text-sky-600 font-bold uppercase tracking-wider">Store Code: GS</p>
       </div>
     </div>
 
+    <!-- Store Selector Badge -->
+    <div class="mb-4 bg-sky-50 border border-sky-200/80 rounded-2xl p-2.5 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
+        <span class="text-xs font-bold text-sky-950">Active: <strong>GS (Ghash Foring)</strong></span>
+      </div>
+      <button onclick="openSettingsModal()" class="text-[10px] text-sky-700 font-bold hover:underline">Change</button>
+    </div>
+
     <nav class="space-y-1 text-xs font-semibold text-slate-600">
-      <a href="#" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl bg-slate-100 text-slate-900 font-bold">
-        <i class="fa-solid fa-house w-4 text-center"></i> ড্যাশবোর্ড
+      <a href="#" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl bg-sky-50 text-sky-900 font-bold border border-sky-100">
+        <i class="fa-solid fa-house w-4 text-center text-sky-600"></i> ড্যাশবোর্ড
       </a>
       <button onclick="openNewOrderModal()" class="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-slate-50 transition text-left">
         <i class="fa-solid fa-cart-plus w-4 text-center text-slate-400"></i> নতুন ম্যানুয়াল অর্ডার
@@ -271,12 +304,12 @@
       </button>
     </nav>
 
-    <div class="mt-auto bg-slate-50 border border-slate-200/80 rounded-2xl p-3.5 text-center">
-      <div class="w-8 h-8 rounded-lg bg-slate-900 text-white flex items-center justify-center mx-auto text-xs shadow-sm mb-1.5">
+    <div class="mt-auto bg-sky-50/80 border border-sky-200/60 rounded-2xl p-3.5 text-center">
+      <div class="w-8 h-8 rounded-lg bg-sky-600 text-white flex items-center justify-center mx-auto text-xs shadow-sm mb-1.5">
         <i class="fa-solid fa-truck-fast"></i>
       </div>
-      <h4 class="font-bold text-xs text-slate-900">SteadFast Webhook Sync</h4>
-      <p class="text-[10px] text-slate-500 mt-0.5">অটোমেটিক রিয়েল-টাইম শিপিং আপডেট</p>
+      <h4 class="font-bold text-xs text-sky-950">SteadFast Live Sync</h4>
+      <p class="text-[10px] text-sky-700/80 mt-0.5">fancy-water-9087 ওয়ার্কার অ্যাক্টিভ</p>
     </div>
   </aside>
 
@@ -284,19 +317,20 @@
   <div class="flex-1 flex flex-col min-w-0">
 
     <!-- Top Header -->
-    <header class="bg-white border-b border-slate-200 px-4 lg:px-7 py-3.5 sticky top-0 z-30 flex items-center justify-between gap-2 shadow-sm">
+    <header class="bg-white border-b border-sky-100 px-4 lg:px-7 py-3.5 sticky top-0 z-30 flex items-center justify-between gap-2 shadow-sm">
       <div class="flex items-center gap-3">
-        <div class="w-9 h-9 rounded-xl bg-slate-900 text-white font-black flex items-center justify-center text-sm lg:hidden">AL</div>
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-sky-600 to-sky-500 text-white font-black flex items-center justify-center text-sm lg:hidden font-brand">GF</div>
         <div>
           <h2 class="text-base lg:text-lg font-black text-slate-900 flex items-center gap-1.5 leading-tight">
-            <span>Welcome, Azwad Sir!</span> 👋
+            <span>Ghash Foring ড্যাশবোর্ড</span>
+            <span class="text-[10px] bg-sky-100 text-sky-800 font-extrabold px-2 py-0.5 rounded-full uppercase">GS Live</span>
           </h2>
-          <p class="text-[10px] text-slate-400 font-medium">লাইভ অর্ডার ম্যানেজমেন্ট ও শিপিং হাব</p>
+          <p class="text-[10px] text-slate-400 font-medium">fancy-water-9087 লাইভ অর্ডার ম্যানেজমেন্ট ও শিপিং হাব</p>
         </div>
       </div>
 
       <div class="flex items-center gap-2">
-        <button onclick="openNewOrderModal()" class="inline-flex items-center gap-1.5 bg-slate-900 hover:bg-black text-white text-xs font-bold px-3 py-2 rounded-xl shadow-sm transition">
+        <button onclick="openNewOrderModal()" class="inline-flex items-center gap-1.5 bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold px-3 py-2 rounded-xl shadow-sm transition">
           <i class="fa-solid fa-plus text-[10px]"></i> <span class="hidden sm:inline">নতুন অর্ডার</span>
         </button>
         <button onclick="openSettingsModal()" class="w-9 h-9 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 rounded-xl flex items-center justify-center text-xs transition" title="সেটিংস">
@@ -315,21 +349,21 @@
 
       <!-- ================= 📊 4 DYNAMIC SUMMARY METRIC CARDS ================= -->
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-2.5 lg:gap-4">
-        <div class="bg-slate-900 text-white rounded-2xl p-4 shadow-sm flex flex-col justify-between">
-          <div class="flex justify-between items-center text-slate-400 text-xs font-semibold">
+        <div class="bg-gradient-to-br from-sky-950 to-sky-900 text-white rounded-2xl p-4 shadow-sm flex flex-col justify-between">
+          <div class="flex justify-between items-center text-sky-200 text-xs font-semibold">
             <span id="salesCardTitle">ফিল্টার মোট সেলস</span>
             <i class="fa-solid fa-sack-dollar text-white"></i>
           </div>
           <div class="my-2">
             <h3 id="statSelectedSales" class="text-xl lg:text-2xl font-black tracking-tight num">৳০</h3>
           </div>
-          <p class="text-[10px] text-slate-400 truncate" id="salesCardSubtitle">ফিল্টারের সময় অনুযায়ী মোট সেলস</p>
+          <p class="text-[10px] text-sky-300 truncate" id="salesCardSubtitle">ফিল্টারের সময় অনুযায়ী মোট সেলস</p>
         </div>
 
-        <div class="bg-white border border-slate-200 rounded-2xl p-4 shadow-sm flex flex-col justify-between">
+        <div class="bg-white border border-sky-100 rounded-2xl p-4 shadow-sm flex flex-col justify-between">
           <div class="flex justify-between items-center text-slate-500 text-xs font-semibold">
             <span id="orderCountCardTitle">মোট অর্ডার সংখ্যা</span>
-            <i class="fa-regular fa-calendar text-blue-500"></i>
+            <i class="fa-regular fa-calendar text-sky-600"></i>
           </div>
           <div class="my-2 flex items-baseline gap-1.5">
             <h3 id="statTodayCount" class="text-xl lg:text-2xl font-black text-slate-900 num">০</h3>
@@ -338,7 +372,7 @@
           <p class="text-[10px] text-slate-500 font-semibold" id="yesterdayComparisonText">গতকাল: <span id="statYesterdayRevenue" class="text-slate-800 font-bold num">৳০</span></p>
         </div>
 
-        <div class="bg-white border border-slate-200 rounded-2xl p-4 shadow-sm flex flex-col justify-between">
+        <div class="bg-white border border-sky-100 rounded-2xl p-4 shadow-sm flex flex-col justify-between">
           <div class="flex justify-between items-center text-emerald-700 text-xs font-semibold">
             <span>কনফার্মড অর্ডার</span>
             <i class="fa-solid fa-circle-check"></i>
@@ -350,7 +384,7 @@
           <p class="text-[10px] text-slate-500 font-medium">মূল্য: <strong id="statConfirmedAmount" class="text-emerald-700 font-bold num">৳০</strong></p>
         </div>
 
-        <div class="bg-white border border-slate-200 rounded-2xl p-4 shadow-sm flex flex-col justify-between">
+        <div class="bg-white border border-sky-100 rounded-2xl p-4 shadow-sm flex flex-col justify-between">
           <div class="flex justify-between items-center text-rose-600 text-xs font-semibold">
             <span>বাতিল (Cancelled)</span>
             <i class="fa-solid fa-ban"></i>
@@ -367,10 +401,10 @@
       <div>
         <div class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2 flex justify-between items-center px-1">
           <span>শিপিং ধাপ ও স্ট্যাটাস ফিল্টার (ট্যাপ করুন)</span>
-          <span class="text-slate-400 text-[10px] font-normal">মোবাইল ও পিসিতে সিঙ্কড</span>
+          <span class="text-sky-700 text-[10px] font-semibold">স্টোর: GS (Ghash Foring)</span>
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
-          <div onclick="setQuickFilter('ALL')" id="filterCard-ALL" class="filter-card bg-slate-900 text-white rounded-xl p-2.5 shadow-sm flex items-center justify-between border border-transparent">
+          <div onclick="setQuickFilter('ALL')" id="filterCard-ALL" class="filter-card bg-sky-950 text-white rounded-xl p-2.5 shadow-sm flex items-center justify-between border border-transparent">
             <div class="flex items-center gap-2">
               <span class="w-7 h-7 rounded-lg bg-white/15 flex items-center justify-center text-xs"><i class="fa-solid fa-border-all"></i></span>
               <div>
@@ -378,7 +412,7 @@
                 <div id="quickCount-ALL" class="text-sm font-black num leading-tight">০</div>
               </div>
             </div>
-            <i class="fa-solid fa-chevron-right text-[10px] text-slate-400"></i>
+            <i class="fa-solid fa-chevron-right text-[10px] text-sky-300"></i>
           </div>
 
           <div onclick="setQuickFilter('Pending')" id="filterCard-Pending" class="filter-card bg-white border border-slate-200 rounded-xl p-2.5 shadow-sm flex items-center justify-between">
@@ -439,16 +473,16 @@
       </div>
 
       <!-- ================= 🔍 SEARCH & ADVANCED FILTERS ================= -->
-      <div class="bg-white border border-slate-200 rounded-2xl p-3 shadow-sm space-y-2.5">
+      <div class="bg-white border border-sky-100 rounded-2xl p-3 shadow-sm space-y-2.5">
         <div class="grid grid-cols-1 md:grid-cols-12 gap-2">
           <div class="relative md:col-span-6">
             <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-slate-400 text-xs"></i>
             <input type="text" id="searchInput" oninput="filterOrders()" placeholder="নাম, মোবাইল, এলাকা বা আইডি দিয়ে খুঁজুন..." 
-              class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-9 pr-3 py-2 text-xs outline-none focus:border-slate-900 focus:bg-white transition" />
+              class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-9 pr-3 py-2 text-xs outline-none focus:border-sky-600 focus:bg-white transition" />
           </div>
 
           <div class="md:col-span-3">
-            <select id="dateFilter" onchange="handleDatePresetChange()" class="w-full bg-slate-50 border border-slate-200 text-xs font-bold text-slate-700 rounded-xl px-3 py-2 outline-none focus:border-slate-900 cursor-pointer">
+            <select id="dateFilter" onchange="handleDatePresetChange()" class="w-full bg-slate-50 border border-slate-200 text-xs font-bold text-slate-700 rounded-xl px-3 py-2 outline-none focus:border-sky-600 cursor-pointer">
               <option value="ALL">📅 সব সময়ের অর্ডার</option>
               <option value="TODAY">✨ আজকের অর্ডার (Today)</option>
               <option value="YESTERDAY">গতকালকের অর্ডার</option>
@@ -459,7 +493,7 @@
           </div>
 
           <div class="md:col-span-3">
-            <select id="statusFilter" onchange="filterOrders()" class="w-full bg-slate-50 border border-slate-200 text-xs font-bold text-slate-700 rounded-xl px-3 py-2 outline-none focus:border-slate-900 cursor-pointer">
+            <select id="statusFilter" onchange="filterOrders()" class="w-full bg-slate-50 border border-slate-200 text-xs font-bold text-slate-700 rounded-xl px-3 py-2 outline-none focus:border-sky-600 cursor-pointer">
               <option value="ALL">⚡ সকল স্ট্যাটাস</option>
               <option value="Pending">🟡 প্রসেসিং (Processing)</option>
               <option value="Confirmed">🔵 কনফার্মড (Confirmed)</option>
@@ -483,11 +517,11 @@
       <div class="block lg:hidden space-y-3" id="mobileOrderCards"></div>
 
       <!-- ================= 💻 DESKTOP VIEW: CLEAN ORDER TABLE ================= -->
-      <div class="hidden lg:block bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
-        <div class="px-5 py-3.5 border-b border-slate-100 flex items-center justify-between">
+      <div class="hidden lg:block bg-white border border-sky-100 rounded-2xl shadow-sm overflow-hidden">
+        <div class="px-5 py-3.5 border-b border-sky-50 flex items-center justify-between">
           <div class="flex items-center gap-2">
-            <h3 class="font-extrabold text-slate-900 text-sm">অর্ডার তালিকা</h3>
-            <span id="filteredCountBadge" class="bg-slate-100 text-slate-900 text-xs font-bold px-2 py-0.5 rounded-full num">০</span>
+            <h3 class="font-extrabold text-slate-900 text-sm">Ghash Foring অর্ডার তালিকা</h3>
+            <span id="filteredCountBadge" class="bg-sky-100 text-sky-900 text-xs font-bold px-2 py-0.5 rounded-full num">০</span>
           </div>
           <div class="text-xs text-slate-400 flex items-center gap-1.5">
             <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
@@ -497,20 +531,20 @@
 
         <div class="overflow-x-auto">
           <table class="w-full text-left text-xs">
-            <thead class="bg-slate-50 border-b border-slate-200 text-slate-500 uppercase text-[10px] font-extrabold tracking-wider">
+            <thead class="bg-sky-50/70 border-b border-sky-100 text-slate-600 uppercase text-[10px] font-extrabold tracking-wider">
               <tr>
                 <th class="p-3.5">আইডি ও সময়</th>
                 <th class="p-3.5">কাস্টমার ও ঠিকানা</th>
-                <th class="p-3.5">প্রোডাক্ট</th>
+                <th class="p-3.5">প্রোডাক্ট ও প্যাকেজ</th>
                 <th class="p-3.5">মোট মূল্য</th>
-                <th class="p-3.5 text-center">কুরিয়ার ও SteadFast</th>
+                <th class="p-3.5 text-center">কুরিয়ার ও যোগাযোগ</th>
                 <th class="p-3.5 text-right">শিপিং স্ট্যাটাস</th>
               </tr>
             </thead>
             <tbody id="orderTableBody" class="divide-y divide-slate-100 font-medium">
               <tr>
                 <td colspan="6" class="text-center py-12 text-slate-400">
-                  <i class="fa-solid fa-circle-notch fa-spin text-xl text-slate-900 mb-2"></i>
+                  <i class="fa-solid fa-circle-notch fa-spin text-xl text-sky-600 mb-2"></i>
                   <p>অর্ডার লোড হচ্ছে...</p>
                 </td>
               </tr>
@@ -523,21 +557,28 @@
   </div>
 
   <!-- Toast Notification -->
-  <div id="toast" class="fixed bottom-5 right-5 z-50 bg-slate-900 text-white text-xs font-bold px-4 py-3 rounded-2xl shadow-2xl transform translate-y-20 opacity-0 transition-all duration-300 flex items-center gap-2">
+  <div id="toast" class="fixed bottom-5 right-5 z-50 bg-sky-950 text-white text-xs font-bold px-4 py-3 rounded-2xl shadow-2xl transform translate-y-20 opacity-0 transition-all duration-300 flex items-center gap-2 border border-sky-800">
     <i class="fa-solid fa-circle-check text-emerald-400"></i>
     <span id="toastMsg">সফলভাবে সম্পন্ন হয়েছে!</span>
   </div>
 
   <!-- ================= ⚡ COMPLETE JAVASCRIPT ENGINE ================= -->
   <script>
-    const WORKER_URL = "https://fancy-water-9087.azwadprogramming.workers.dev/"; 
-    const PASSWORD = "foring123"; 
+    // Live Cloudflare Worker configured for Ghash Foring (GS)
+    const WORKER_URL = "https://fancy-water-9087.azwadprogramming.workers.dev"; 
+    const PASSWORD = "admin123"; 
 
     let allOrders = [];
     let currentQuickStatus = 'ALL';
+    
+    // Enforce Store GS
     let currentStoreCode = localStorage.getItem('sb_store_code') || 'GS';
+    if (currentStoreCode === 'AL' || !currentStoreCode) {
+      currentStoreCode = 'GS';
+      localStorage.setItem('sb_store_code', 'GS');
+    }
 
-    const toEn = (s) => String(s).replace(/[০-৯]/g, d => "০১২৩৪৫৬৭৮৯".indexOf(d));
+    const toEn = (s) => String(s || '').replace(/[০-৯]/g, d => "০১২৩৪৫৬৭৮৯".indexOf(d));
     const parseAmount = (str) => {
       if(!str) return 0;
       const numOnly = toEn(String(str)).replace(/[^\d]/g, '');
@@ -567,7 +608,7 @@
       loadOrders();
     }
 
-    // Load Orders from Worker
+    // Load Orders from Worker for Store GS
     async function loadOrders() {
       const icon = document.getElementById('refreshIcon');
       if(icon) icon.classList.add('fa-spin');
@@ -576,14 +617,16 @@
         const res = await fetch(`${WORKER_URL}/orders?store=${currentStoreCode}`);
         const data = await res.json();
         
-        allOrders = data.map(item => ({
+        allOrders = (Array.isArray(data) ? data : []).map(item => ({
           ...item,
+          quantity: item.package || item.quantity || 'N/A',
           numericTotal: item.numericTotal || parseAmount(item.total)
         }));
 
         filterOrders();
         document.getElementById('lastUpdatedTime').innerText = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
       } catch (err) {
+        console.error('Fetch orders failed:', err);
         showToast("অর্ডার লোড হতে সমস্যা হয়েছে!");
       } finally {
         if(icon) icon.classList.remove('fa-spin');
@@ -758,7 +801,7 @@
         const card = document.getElementById(`filterCard-${k}`);
         if(!card) return;
         if(k === statusKey) {
-          card.className = "filter-card bg-slate-900 text-white rounded-xl p-2.5 shadow-sm flex items-center justify-between border border-transparent";
+          card.className = "filter-card bg-sky-950 text-white rounded-xl p-2.5 shadow-sm flex items-center justify-between border border-transparent";
           const countEl = document.getElementById(`quickCount-${k}`);
           if(countEl) countEl.className = "text-sm font-black num leading-tight text-white";
         } else {
@@ -824,7 +867,7 @@
         `;
       } else {
         return `
-          <button onclick="sendToSteadFast('${o.orderId}')" class="inline-flex items-center gap-1.5 bg-slate-900 hover:bg-black text-white text-[11px] font-bold px-3 py-1.5 rounded-xl shadow-sm transition">
+          <button onclick="sendToSteadFast('${o.orderId}')" class="inline-flex items-center gap-1.5 bg-sky-900 hover:bg-sky-950 text-white text-[11px] font-bold px-3 py-1.5 rounded-xl shadow-sm transition">
             <i class="fa-solid fa-truck-fast text-[10px]"></i> SteadFast পাঠান
           </button>
         `;
@@ -885,10 +928,10 @@
         const courierText = `${o.name} | ${cleanPhone} | ${o.address} | ${o.numericTotal} TK`;
 
         return `
-        <tr class="hover:bg-slate-50/80 transition">
+        <tr class="hover:bg-sky-50/40 transition">
           <td class="p-3.5 whitespace-nowrap">
-            <button onclick="openShippingModal('${o.orderId}')" class="font-extrabold text-slate-900 num text-xs hover:underline flex items-center gap-1">
-              #${o.orderId || 'N/A'} <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-slate-400"></i>
+            <button onclick="openShippingModal('${o.orderId}')" class="font-extrabold text-sky-950 num text-xs hover:underline flex items-center gap-1">
+              #${o.orderId || 'N/A'} <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-sky-600"></i>
             </button>
             <div class="text-[10px] text-slate-400 font-medium mt-0.5">${o.time || 'N/A'}</div>
           </td>
@@ -904,23 +947,23 @@
 
           <td class="p-3.5">
             <div class="font-bold text-slate-800 text-xs">${o.product}</div>
-            <div class="text-[10px] text-slate-500">${o.quantity}</div>
+            <div class="text-[10px] text-sky-700 font-semibold">${o.quantity}</div>
           </td>
 
           <td class="p-3.5 whitespace-nowrap">
-            <div class="font-black text-slate-900 text-sm num">${o.total}</div>
+            <div class="font-black text-sky-950 text-sm num">${o.total}</div>
             <span class="text-[9px] font-bold text-slate-400 uppercase">${o.payment || 'COD'}</span>
           </td>
 
           <td class="p-3.5 text-center whitespace-nowrap">
             <div class="flex items-center justify-center gap-1.5 mb-1.5">
-              <a href="tel:${cleanPhone}" class="w-6 h-6 rounded-lg bg-slate-100 hover:bg-slate-900 hover:text-white text-slate-600 flex items-center justify-center text-[10px]" title="কল দিন">
+              <a href="tel:${cleanPhone}" class="w-6 h-6 rounded-lg bg-sky-50 hover:bg-sky-600 hover:text-white text-sky-700 flex items-center justify-center text-[10px] transition" title="কল দিন">
                 <i class="fa-solid fa-phone"></i>
               </a>
-              <a href="https://wa.me/88${cleanPhone}?text=${encodeURIComponent('আসসালামু আলাইকুম ' + o.name + ', Azwad Leather থেকে যোগাযোগ করছি।')}" target="_blank" class="w-6 h-6 rounded-lg bg-slate-100 hover:bg-emerald-600 hover:text-white text-slate-600 flex items-center justify-center text-[10px]" title="WhatsApp">
+              <a href="https://wa.me/88${cleanPhone}?text=${encodeURIComponent('আসসালামু আলাইকুম ' + o.name + ' ভাই/ম্যাম, Ghash Foring থেকে আপনার ট্রাভেল নেক পিলো অর্ডারটির ব্যাপারে যোগাযোগ করছি।')}" target="_blank" class="w-6 h-6 rounded-lg bg-emerald-50 hover:bg-emerald-600 hover:text-white text-emerald-600 flex items-center justify-center text-[10px] transition" title="WhatsApp">
                 <i class="fa-brands fa-whatsapp"></i>
               </a>
-              <button onclick="copyToClipboard('${courierText.replace(/'/g, "\\'")}', 'কুরিয়ার টেক্সট কপি হয়েছে!')" class="w-6 h-6 rounded-lg bg-slate-100 hover:bg-slate-900 hover:text-white text-slate-600 flex items-center justify-center text-[10px]" title="কপি করুন">
+              <button onclick="copyToClipboard('${courierText.replace(/'/g, "\\'")}', 'কুরিয়ার টেক্সট কপি হয়েছে!')" class="w-6 h-6 rounded-lg bg-slate-100 hover:bg-slate-900 hover:text-white text-slate-600 flex items-center justify-center text-[10px] transition" title="কপি করুন">
                 <i class="fa-solid fa-copy"></i>
               </button>
             </div>
@@ -952,10 +995,10 @@
         const courierText = `${o.name} | ${cleanPhone} | ${o.address} | ${o.numericTotal} TK`;
 
         return `
-        <div class="bg-white border border-slate-200 rounded-2xl p-4 shadow-sm space-y-3">
+        <div class="bg-white border border-sky-100 rounded-2xl p-4 shadow-sm space-y-3">
           <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
             <div>
-              <span class="font-extrabold text-slate-900 num text-sm">#${o.orderId || 'N/A'}</span>
+              <span class="font-extrabold text-sky-950 num text-sm">#${o.orderId || 'N/A'}</span>
               <div class="text-[10px] text-slate-400">${o.time || ''}</div>
             </div>
             <select onchange="updateOrderStatus('${o.orderId}', this.value)" class="text-xs font-bold border rounded-xl px-2.5 py-1 outline-none ${getStatusBadge(o.status)}">
@@ -970,7 +1013,7 @@
           <div>
             <div class="font-bold text-slate-900 text-sm flex items-center justify-between">
               <span>${o.name}</span>
-              <span class="font-black text-slate-900 num text-sm">${o.total}</span>
+              <span class="font-black text-sky-950 num text-sm">${o.total}</span>
             </div>
             <div class="text-xs text-slate-500 mt-0.5 leading-relaxed">${o.address}</div>
             <div class="mt-2 flex items-center gap-1.5 flex-wrap">
@@ -979,10 +1022,10 @@
             </div>
           </div>
 
-          <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100 flex items-center justify-between text-xs">
+          <div class="bg-sky-50/70 p-2.5 rounded-xl border border-sky-100 flex items-center justify-between text-xs">
             <div>
               <div class="font-bold text-slate-800">${o.product}</div>
-              <div class="text-[10px] text-slate-500">${o.quantity}</div>
+              <div class="text-[10px] text-sky-700 font-semibold">${o.quantity}</div>
             </div>
             <span class="text-[10px] font-bold text-slate-500 uppercase">${o.payment || 'COD'}</span>
           </div>
@@ -994,10 +1037,10 @@
 
           <div class="flex items-center justify-between gap-1.5 pt-1">
             <div class="flex items-center gap-1.5">
-              <a href="tel:${cleanPhone}" class="w-8 h-8 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center text-xs" title="Call">
+              <a href="tel:${cleanPhone}" class="w-8 h-8 rounded-xl bg-sky-50 text-sky-700 flex items-center justify-center text-xs" title="Call">
                 <i class="fa-solid fa-phone"></i>
               </a>
-              <a href="https://wa.me/88${cleanPhone}?text=${encodeURIComponent('আসসালামু আলাইকুম ' + o.name + ', Azwad Leather থেকে বলছি।')}" target="_blank" class="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xs" title="WhatsApp">
+              <a href="https://wa.me/88${cleanPhone}?text=${encodeURIComponent('আসসালামু আলাইকুম ' + o.name + ' ভাই/ম্যাম, Ghash Foring থেকে আপনার অর্ডারের ব্যাপারে যোগাযোগ করছি।')}" target="_blank" class="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xs" title="WhatsApp">
                 <i class="fa-brands fa-whatsapp"></i>
               </a>
               <button onclick="copyToClipboard('${courierText.replace(/'/g, "\\'")}', 'কুরিয়ার কপি সম্পন্ন!')" class="w-8 h-8 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center text-xs" title="Copy">
@@ -1005,8 +1048,8 @@
               </button>
             </div>
 
-            <button onclick="openShippingModal('${o.orderId}')" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs rounded-xl flex items-center gap-1.5 transition">
-              <i class="fa-solid fa-route text-slate-500"></i> শিপিং স্টেপস
+            <button onclick="openShippingModal('${o.orderId}')" class="px-3 py-1.5 bg-sky-50 hover:bg-sky-100 text-sky-900 font-bold text-xs rounded-xl flex items-center gap-1.5 transition">
+              <i class="fa-solid fa-route text-sky-600"></i> শিপিং স্টেপস
             </button>
           </div>
         </div>`;
@@ -1072,7 +1115,7 @@
       container.innerHTML = steps.map((s, idx) => {
         const isDone = idx < stepIndex;
         const isActive = idx === stepIndex;
-        const stateColor = isDone ? 'bg-emerald-500 text-white' : (isActive ? 'bg-slate-900 text-white ring-4 ring-slate-100' : 'bg-slate-100 text-slate-400');
+        const stateColor = isDone ? 'bg-emerald-500 text-white' : (isActive ? 'bg-sky-950 text-white ring-4 ring-sky-100' : 'bg-slate-100 text-slate-400');
         const borderIndicator = idx < steps.length - 1 ? 'border-l-2 border-slate-200 ml-3.5 pl-5 pb-4' : 'ml-3.5 pl-5';
 
         return `
@@ -1086,7 +1129,7 @@
                   <h5 class="text-xs font-bold ${isActive ? 'text-slate-900 font-extrabold' : 'text-slate-700'}">${s.label}</h5>
                   <p class="text-[10px] text-slate-400">${s.desc}</p>
                 </div>
-                ${!isDone && !isActive ? `<button onclick="updateOrderStatus('${o.orderId}', '${s.key}'); openShippingModal('${o.orderId}')" class="text-[10px] font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 px-2 py-1 rounded-lg">এটিতে নিন</button>` : ''}
+                ${!isDone && !isActive ? `<button onclick="updateOrderStatus('${o.orderId}', '${s.key}'); openShippingModal('${o.orderId}')" class="text-[10px] font-bold text-sky-700 bg-sky-50 hover:bg-sky-100 px-2 py-1 rounded-lg">এটিতে নিন</button>` : ''}
               </div>
             </div>
             ${idx < steps.length - 1 ? `<div class="${borderIndicator}"></div>` : ''}
@@ -1096,7 +1139,7 @@
 
       const sfBtnContainer = document.getElementById('stepModalSteadfastBtn');
       if(!isSent) {
-        sfBtnContainer.innerHTML = `<button onclick="sendToSteadFast('${o.orderId}')" class="w-full bg-slate-900 hover:bg-black text-white font-bold text-xs py-2 rounded-xl transition flex items-center justify-center gap-1.5"><i class="fa-solid fa-truck-fast"></i> SteadFast-এ বুকিং করুন</button>`;
+        sfBtnContainer.innerHTML = `<button onclick="sendToSteadFast('${o.orderId}')" class="w-full bg-sky-900 hover:bg-sky-950 text-white font-bold text-xs py-2 rounded-xl transition flex items-center justify-center gap-1.5"><i class="fa-solid fa-truck-fast"></i> SteadFast-এ বুকিং করুন</button>`;
       } else {
         sfBtnContainer.innerHTML = `
           <div class="flex items-center gap-2">
@@ -1171,8 +1214,8 @@
     function updateManualPrice() {
       const pkgSelect = document.getElementById('mPackage');
       const areaSelect = document.getElementById('mArea');
-      const pPrice = parseInt(pkgSelect.options[pkgSelect.selectedIndex].dataset.price || '890', 10);
-      const deliveryCharge = parseInt(areaSelect.options[areaSelect.selectedIndex].dataset.charge || '0', 10);
+      const pPrice = parseInt(pkgSelect.options[pkgSelect.selectedIndex].dataset.price || '1149', 10);
+      const deliveryCharge = parseInt(areaSelect.options[areaSelect.selectedIndex].dataset.charge || '80', 10);
       document.getElementById('mTotalBill').value = `৳${pPrice + deliveryCharge}`;
     }
 
@@ -1184,8 +1227,8 @@
 
       const orderPayload = {
         store_code: currentStoreCode,
-        store_name: 'Ghashforing',
-        product: 'Neck Pillow',
+        store_name: 'Ghash Foring',
+        product: 'Travel Neck Pillow',
         quantity: document.getElementById('mPackage').value,
         name: document.getElementById('mCustName').value.trim(),
         phone: document.getElementById('mCustPhone').value.trim(),
@@ -1220,7 +1263,7 @@
       }
     }
 
-    // Dynamic Client Settings
+    // Dynamic Store Settings
     async function openSettingsModal() {
       document.getElementById('settingsModal').classList.remove('hidden');
       document.getElementById('cfgStoreCode').value = currentStoreCode;
@@ -1257,7 +1300,7 @@
       btn.disabled = true;
       btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> সেভ হচ্ছে...`;
 
-      const storeCode = document.getElementById('cfgStoreCode').value.trim().toUpperCase() || 'AL';
+      const storeCode = document.getElementById('cfgStoreCode').value.trim().toUpperCase() || 'GS';
       currentStoreCode = storeCode;
       localStorage.setItem('sb_store_code', currentStoreCode);
 
@@ -1313,7 +1356,7 @@
       const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
       const link = document.createElement("a");
       link.href = URL.createObjectURL(blob);
-      link.download = `Orders_Export_${new Date().toISOString().slice(0,10)}.csv`;
+      link.download = `GhashForing_Orders_${new Date().toISOString().slice(0,10)}.csv`;
       link.click();
     }
   </script>
