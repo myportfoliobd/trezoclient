@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Ghash Foring | Premium Travel Neck Pillow</title>
-    <meta name="description" content="Super soft, ergonomic memory travel neck pillow combos by Ghash Foring. Super comfort for any journey.">
+    <meta name="description" content="Super soft, ergonomic memory travel neck pillow combos by Ghash Foring. Super comfort for any journey. Complimentary nationwide delivery.">
     <meta name="theme-color" content="#0284C7">
 
     <!-- Preconnect Google Fonts -->
@@ -133,9 +133,9 @@
                 </div>
             </a>
             <div class="flex items-center gap-2 sm:gap-3 font-sans">
-                <a href="#productCatalogue" class="hidden sm:inline-flex border border-skyAero-200 hover:bg-skyAero-50 text-skyAero-800 text-xs font-semibold px-4 py-2 rounded-full transition">
+                <button type="button" onclick="triggerViewContent()" class="hidden sm:inline-flex border border-skyAero-200 hover:bg-skyAero-50 text-skyAero-800 text-xs font-semibold px-4 py-2 rounded-full transition cursor-pointer">
                     View Offers
-                </a>
+                </button>
                 <a href="#checkoutSection" class="bg-gradient-to-r from-skyAero-600 to-skyAero-700 hover:from-skyAero-700 hover:to-skyAero-800 text-white text-[11px] sm:text-xs font-bold px-4 sm:px-5 py-2 sm:py-2.5 rounded-full transition shadow-md shadow-skyAero-600/25">
                     Order Now (৳<span class="cart-total-badge">1229</span>)
                 </a>
@@ -188,14 +188,14 @@
             <!-- Hero Image Preview -->
             <div class="lg:col-span-6 order-1 lg:order-2">
                 <div class="relative max-w-[320px] sm:max-w-md mx-auto rounded-3xl overflow-hidden bg-white/90 p-2 sm:p-3 border-2 border-skyAero-200 shadow-xl shadow-skyAero-400/20">
-                    <div class="relative w-full aspect-square rounded-2xl overflow-hidden cursor-pointer bg-skyAero-50" onclick="openLightbox(0)">
+                    <div class="relative w-full aspect-square rounded-2xl overflow-hidden cursor-pointer bg-skyAero-50" onclick="openHeroLightbox()">
                         <img id="heroImage" src="https://ghashforing.sellsurge.shop/media/GHASHFORING/1790466933139_prod_extra_908.jpg" alt="Ghash Foring Neck Pillow Combo" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
                     </div>
                     
-                    <button type="button" onclick="prevHeroSlide(event)" aria-label="Previous" class="absolute left-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/95 hover:bg-white text-skyAero-900 shadow-md flex items-center justify-center text-xs transition z-20">
+                    <button type="button" onclick="prevHeroSlide(event)" aria-label="Previous" class="absolute left-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/95 hover:bg-white text-skyAero-900 shadow-md flex items-center justify-center text-xs transition z-20 cursor-pointer">
                         <i class="fa-solid fa-chevron-left"></i>
                     </button>
-                    <button type="button" onclick="nextHeroSlide(event)" aria-label="Next" class="absolute right-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/95 hover:bg-white text-skyAero-900 shadow-md flex items-center justify-center text-xs transition z-20">
+                    <button type="button" onclick="nextHeroSlide(event)" aria-label="Next" class="absolute right-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/95 hover:bg-white text-skyAero-900 shadow-md flex items-center justify-center text-xs transition z-20 cursor-pointer">
                         <i class="fa-solid fa-chevron-right"></i>
                     </button>
                 </div>
@@ -220,13 +220,13 @@
 
                 <!-- Clean Category Filter Tabs -->
                 <div class="flex items-center justify-center gap-1.5 pt-2 text-xs font-bold font-sans">
-                    <button type="button" onclick="filterCategory('all')" id="tab-all" class="px-3.5 py-1.5 rounded-full bg-skyAero-700 text-white shadow-sm transition">
+                    <button type="button" onclick="filterCategory('all')" id="tab-all" class="px-3.5 py-1.5 rounded-full bg-skyAero-700 text-white shadow-sm transition cursor-pointer">
                         সবগুলো (All)
                     </button>
-                    <button type="button" onclick="filterCategory('combo')" id="tab-combo" class="px-3.5 py-1.5 rounded-full bg-white text-skyAero-800 border border-skyAero-200 hover:bg-skyAero-50 transition">
+                    <button type="button" onclick="filterCategory('combo')" id="tab-combo" class="px-3.5 py-1.5 rounded-full bg-white text-skyAero-800 border border-skyAero-200 hover:bg-skyAero-50 transition cursor-pointer">
                         কম্বো প্যাক (Combos)
                     </button>
-                    <button type="button" onclick="filterCategory('single')" id="tab-single" class="px-3.5 py-1.5 rounded-full bg-white text-skyAero-800 border border-skyAero-200 hover:bg-skyAero-50 transition">
+                    <button type="button" onclick="filterCategory('single')" id="tab-single" class="px-3.5 py-1.5 rounded-full bg-white text-skyAero-800 border border-skyAero-200 hover:bg-skyAero-50 transition cursor-pointer">
                         ১ পিস (Single Pillows)
                     </button>
                 </div>
@@ -306,9 +306,9 @@
                     <div class="flex items-center justify-between pt-2 border-t border-skyAero-200/60 text-xs">
                         <span class="font-semibold text-skyAero-900">পরিমাণ (Quantity)</span>
                         <div class="flex items-center gap-3 bg-white px-2 py-1 rounded-xl border border-skyAero-200 shadow-sm">
-                            <button type="button" onclick="adjustQty(-1)" class="w-6 h-6 rounded-lg bg-skyAero-700 text-white font-bold flex items-center justify-center">-</button>
+                            <button type="button" onclick="adjustQty(-1)" class="w-6 h-6 rounded-lg bg-skyAero-700 text-white font-bold flex items-center justify-center cursor-pointer">-</button>
                             <span id="quantityDisplay" class="font-bold text-sm w-4 text-center">1</span>
-                            <button type="button" onclick="adjustQty(1)" class="w-6 h-6 rounded-lg bg-skyAero-700 text-white font-bold flex items-center justify-center">+</button>
+                            <button type="button" onclick="adjustQty(1)" class="w-6 h-6 rounded-lg bg-skyAero-700 text-white font-bold flex items-center justify-center cursor-pointer">+</button>
                         </div>
                     </div>
 
@@ -333,7 +333,7 @@
                     <div>
                         <label class="block text-xs font-bold text-skyAero-900 mb-1">আপনার পূর্ণ নাম (Full Name) *</label>
                         <input type="text" id="custName" placeholder="নাম লিখুন" required class="input-field" onfocus="handleFormInteraction()">
-                        <p class="error-label" id="err-name">দয়া করে আপনার নাম লিখুন।</p>
+                        <p class="error-label" id="err-name">দয়া করে আপনার পূর্ণ নাম লিখুন।</p>
                     </div>
 
                     <div>
@@ -344,8 +344,8 @@
 
                     <div>
                         <label class="block text-xs font-bold text-skyAero-900 mb-1">সম্পূর্ণ ডেলিভারি ঠিকানা *</label>
-                        <textarea id="custAddress" rows="2" placeholder="বাসা/রোড নম্বর, এলাকা, থানা, জেলা" required class="input-field resize-none" onfocus="handleFormInteraction()"></textarea>
-                        <p class="error-label" id="err-address">পূর্ণাঙ্গ ঠিকানা প্রদান করুন।</p>
+                        <textarea id="custAddress" rows="2" placeholder="বাসা/রোড নম্বর, এলাকা, থানা, জেলা (কমপক্ষে ১০ অক্ষর)" required class="input-field resize-none" onfocus="handleFormInteraction()"></textarea>
+                        <p class="error-label" id="err-address">দয়া করে সম্পূর্ণ ঠিকানা লিখুন (কমপক্ষে ১০ অক্ষর)।</p>
                     </div>
 
                     <!-- Dynamic Delivery Charge Selector -->
@@ -369,7 +369,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" id="btnSubmitOrder" class="w-full bg-gradient-to-r from-skyAero-600 to-skyAero-700 hover:from-skyAero-700 hover:to-skyAero-800 text-white font-extrabold py-3.5 sm:py-4 rounded-xl text-sm uppercase tracking-wider transition shadow-lg shadow-skyAero-600/30 flex items-center justify-center gap-2">
+                    <button type="submit" id="btnSubmitOrder" class="w-full bg-gradient-to-r from-skyAero-600 to-skyAero-700 hover:from-skyAero-700 hover:to-skyAero-800 text-white font-extrabold py-3.5 sm:py-4 rounded-xl text-sm uppercase tracking-wider transition shadow-lg shadow-skyAero-600/30 flex items-center justify-center gap-2 cursor-pointer">
                         <span id="btnText">অর্ডার নিশ্চিত করুন (৳<span id="btnPriceLabel">1229</span>)</span>
                         <span id="btnLoader" class="hidden spin-loader"></span>
                     </button>
@@ -424,15 +424,15 @@
             </button>
         </div>
         <div class="flex-1 flex items-center justify-center p-2 relative">
-            <button type="button" onclick="prevLightboxImage(event)" class="absolute left-2 sm:left-6 w-9 h-9 rounded-full bg-skyAero-500/30 hover:bg-skyAero-500/50 text-white flex items-center justify-center z-20">
+            <button type="button" onclick="prevLightboxImage(event)" class="absolute left-2 sm:left-6 w-9 h-9 rounded-full bg-skyAero-500/30 hover:bg-skyAero-500/50 text-white flex items-center justify-center z-20 cursor-pointer">
                 <i class="fa-solid fa-chevron-left"></i>
             </button>
             <img id="lightboxMainImg" src="" alt="Product View" class="max-h-[70vh] w-auto max-w-full object-contain rounded-2xl shadow-2xl border border-skyAero-400/20">
-            <button type="button" onclick="nextLightboxImage(event)" class="absolute right-2 sm:right-6 w-9 h-9 rounded-full bg-skyAero-500/30 hover:bg-skyAero-500/50 text-white flex items-center justify-center z-20">
+            <button type="button" onclick="nextLightboxImage(event)" class="absolute right-2 sm:right-6 w-9 h-9 rounded-full bg-skyAero-500/30 hover:bg-skyAero-500/50 text-white flex items-center justify-center z-20 cursor-pointer">
                 <i class="fa-solid fa-chevron-right"></i>
             </button>
         </div>
-        <div class="text-center text-skyAero-200 font-sans text-xs font-bold tracking-widest py-1" id="lightboxCounter">1/14</div>
+        <div class="text-center text-skyAero-200 font-sans text-xs font-bold tracking-widest py-1" id="lightboxCounter">1/15</div>
         <div class="pb-3 px-2">
             <div class="flex items-center justify-center gap-2 overflow-x-auto py-2" id="lightboxThumbnailsContainer"></div>
         </div>
@@ -618,6 +618,21 @@
         let currentHeroIndex = 0;
         let currentLightboxIndex = 0;
 
+        // ViewContent Tracking Trigger (Matching Old Store Setup)
+        function triggerViewContent() {
+            if (isPixelActive && typeof fbq === 'function') {
+                const prod = PRODUCTS.find(p => p.id === selectedProductId) || PRODUCTS[0];
+                fbq('track', 'ViewContent', {
+                    content_name: prod.name,
+                    content_category: 'Travel Comfort',
+                    value: prod.price,
+                    currency: 'BDT'
+                });
+            }
+            const catSec = document.getElementById('productCatalogue');
+            if (catSec) catSec.scrollIntoView({ behavior: 'smooth' });
+        }
+
         // Filter Category Handler
         function filterCategory(cat) {
             activeCategory = cat;
@@ -625,9 +640,9 @@
                 const btn = document.getElementById(`tab-${c}`);
                 if (!btn) return;
                 if (c === cat) {
-                    btn.className = "px-3.5 py-1.5 rounded-full bg-skyAero-700 text-white shadow-sm transition";
+                    btn.className = "px-3.5 py-1.5 rounded-full bg-skyAero-700 text-white shadow-sm transition cursor-pointer";
                 } else {
-                    btn.className = "px-3.5 py-1.5 rounded-full bg-white text-skyAero-800 border border-skyAero-200 hover:bg-skyAero-50 transition";
+                    btn.className = "px-3.5 py-1.5 rounded-full bg-white text-skyAero-800 border border-skyAero-200 hover:bg-skyAero-50 transition cursor-pointer";
                 }
             });
             renderProductsGrid();
@@ -667,7 +682,7 @@
                             <span class="text-[10px] text-slate-400 line-through font-sans">৳${p.regularPrice}</span>
                             <span class="text-xs sm:text-base font-black text-skyAero-800 font-sans">৳${p.price}</span>
                         </div>
-                        <button type="button" onclick="addToCartAndCheckout('${p.id}')" class="w-full ${p.id === selectedProductId ? 'bg-emerald-600 hover:bg-emerald-700 text-white' : 'bg-skyAero-600 hover:bg-skyAero-700 text-white'} text-[10px] sm:text-xs font-bold py-1.5 sm:py-2 px-2 rounded-lg sm:rounded-xl transition flex items-center justify-center gap-1 shadow-sm">
+                        <button type="button" onclick="addToCartAndCheckout('${p.id}')" class="w-full ${p.id === selectedProductId ? 'bg-emerald-600 hover:bg-emerald-700 text-white' : 'bg-skyAero-600 hover:bg-skyAero-700 text-white'} text-[10px] sm:text-xs font-bold py-1.5 sm:py-2 px-2 rounded-lg sm:rounded-xl transition flex items-center justify-center gap-1 shadow-sm cursor-pointer">
                             <i class="fa-solid fa-cart-plus text-[10px]"></i>
                             <span>${p.id === selectedProductId ? 'Selected' : 'Add to Cart'}</span>
                         </button>
@@ -742,6 +757,10 @@
             showHeroSlide(currentHeroIndex - 1);
         }
 
+        function openHeroLightbox() {
+            openLightbox(currentHeroIndex);
+        }
+
         // Lightbox Functions
         const lightboxModal = document.getElementById('lightboxModal');
         const lightboxMainImg = document.getElementById('lightboxMainImg');
@@ -753,6 +772,17 @@
             renderLightbox();
             lightboxModal.classList.add('open');
             document.body.style.overflow = 'hidden';
+
+            if (isPixelActive && typeof fbq === 'function') {
+                const item = PRODUCTS[currentLightboxIndex];
+                if (item) {
+                    fbq('track', 'ViewContent', {
+                        content_name: item.name,
+                        value: item.price,
+                        currency: 'BDT'
+                    });
+                }
+            }
         }
 
         function closeLightbox() {
@@ -795,7 +825,7 @@
             if (e.key === 'ArrowLeft') prevLightboxImage();
         });
 
-        // Dynamic Meta Pixel Loader
+        // Dynamic Meta Pixel Loader (Matching Old Store Worker KV Architecture)
         async function loadDynamicPixel() {
             try {
                 const res = await fetch(`${CONFIG.WORKER_URL}/settings?store=${CONFIG.STORE_CODE}`);
@@ -826,7 +856,7 @@
             }
         }
 
-        // Form Validation & Submit
+        // Form Validation & Submit (Synchronized with Worker validation limits)
         const orderForm = document.getElementById('orderForm');
         const btnSubmit = document.getElementById('btnSubmitOrder');
         const btnText = document.getElementById('btnText');
@@ -838,9 +868,27 @@
             const errPhone = document.getElementById('err-phone');
             const errAddress = document.getElementById('err-address');
 
-            if (name.length < 2) { errName.classList.add('show'); valid = false; } else { errName.classList.remove('show'); }
-            if (!/^01[3-9]\d{8}$/.test(phone)) { errPhone.classList.add('show'); valid = false; } else { errPhone.classList.remove('show'); }
-            if (address.length < 8) { errAddress.classList.add('show'); valid = false; } else { errAddress.classList.remove('show'); }
+            if (name.length < 2) { 
+                errName.classList.add('show'); 
+                valid = false; 
+            } else { 
+                errName.classList.remove('show'); 
+            }
+
+            if (!/^01[3-9]\d{8}$/.test(phone)) { 
+                errPhone.classList.add('show'); 
+                valid = false; 
+            } else { 
+                errPhone.classList.remove('show'); 
+            }
+
+            // Worker requires address length >= 10
+            if (address.length < 10) { 
+                errAddress.classList.add('show'); 
+                valid = false; 
+            } else { 
+                errAddress.classList.remove('show'); 
+            }
 
             return valid;
         }
@@ -921,6 +969,7 @@
         // Floating Soft Sky Particles
         function initSkyVibeEffect() {
             const canvas = document.getElementById('skyCanvas');
+            if (!canvas) return;
             const ctx = canvas.getContext('2d');
             let width = (canvas.width = window.innerWidth);
             let height = (canvas.height = window.innerHeight);
