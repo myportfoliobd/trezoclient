@@ -92,7 +92,6 @@
         }
         .lightbox-modal.open { opacity: 1; visibility: visible; }
 
-        /* Floating particles canvas */
         #skyCanvas {
             position: fixed;
             top: 0;
@@ -106,7 +105,6 @@
 </head>
 <body class="font-bangla antialiased pb-24 md:pb-12 relative">
 
-    <!-- Sky Soft Particle Canvas -->
     <canvas id="skyCanvas"></canvas>
 
     <!-- 1. Top Announcement Bar -->
@@ -116,13 +114,13 @@
                 <span>Travel In Comfort • Rest Wherever You Go</span>
                 <span>সুপার সফট ক্লাউড কমফোর্ট ট্রাভেল নেক পিলো</span>
                 <span>ক্যাশ অন ডেলিভারি (পণ্য দেখে মূল্য পরিশোধ করুন)</span>
-                <span>স্পেশাল ডিসকাউন্ট কম্বো অফার</span>
+                <span>ধামাকা ডিসকাউন্ট কম্বো অফার চলছে</span>
                 <span>Travel More, Worry Less</span>
             </div>
         </div>
     </div>
 
-    <!-- 2. Minimal Brand Header -->
+    <!-- 2. Header -->
     <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-skyAero-200 shadow-sm">
         <div class="max-w-6xl mx-auto px-3 sm:px-6 h-15 sm:h-20 flex items-center justify-between">
             <a href="#" class="flex items-center gap-2.5">
@@ -136,10 +134,10 @@
             </a>
             <div class="flex items-center gap-2 sm:gap-3 font-sans">
                 <a href="#productCatalogue" class="hidden sm:inline-flex border border-skyAero-200 hover:bg-skyAero-50 text-skyAero-800 text-xs font-semibold px-4 py-2 rounded-full transition">
-                    View Combos
+                    View Offers
                 </a>
                 <a href="#checkoutSection" class="bg-gradient-to-r from-skyAero-600 to-skyAero-700 hover:from-skyAero-700 hover:to-skyAero-800 text-white text-[11px] sm:text-xs font-bold px-4 sm:px-5 py-2 sm:py-2.5 rounded-full transition shadow-md shadow-skyAero-600/25">
-                    Order Now (৳<span class="cart-total-badge">1490</span>)
+                    Order Now (৳<span class="cart-total-badge">1229</span>)
                 </a>
             </div>
         </div>
@@ -159,7 +157,7 @@
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-skyAero-600 to-cyan-500">Travel Neck Pillow</span>
                 </h1>
                 <p class="text-xs sm:text-base text-skyAero-800/80 leading-relaxed font-bangla">
-                    বাস, ট্রেন বা দূরপাল্লার ভ্রমণে ঘাড় ও মাথার আরাম নিশ্চিত করতে ব্যবহার করুন Ghash Foring-এর মেমোরি সফট সাপোর্ট নেক পিলো। দীর্ঘ জার্নিতেও থাকবেন সম্পূর্ণ ক্লান্তিহীন।
+                    বাস, ট্রেন বা দূরপাল্লার যেকোনো ভ্রমণে ঘাড় ও মাথার আরাম নিশ্চিত করতে ব্যবহার করুন Ghash Foring-এর মেমোরি সফট সাপোর্ট নেক পিলো। জার্নি হবে ক্লান্তিহীন ও প্রশান্তিময়।
                 </p>
 
                 <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2.5 sm:gap-3 pt-1 font-sans">
@@ -171,7 +169,6 @@
                     </a>
                 </div>
 
-                <!-- Highlight badges -->
                 <div class="pt-2 grid grid-cols-3 gap-2 text-center text-[11px] sm:text-xs font-semibold text-skyAero-900">
                     <div class="p-2 sm:p-2.5 rounded-xl sm:rounded-2xl bg-white/80 border border-skyAero-200 shadow-sm">
                         <i class="fa-solid fa-feather text-skyAero-600 text-sm sm:text-base mb-0.5 block"></i>
@@ -188,11 +185,11 @@
                 </div>
             </div>
 
-            <!-- Hero Image Showcase -->
+            <!-- Hero Image Preview -->
             <div class="lg:col-span-6 order-1 lg:order-2">
                 <div class="relative max-w-[320px] sm:max-w-md mx-auto rounded-3xl overflow-hidden bg-white/90 p-2 sm:p-3 border-2 border-skyAero-200 shadow-xl shadow-skyAero-400/20">
                     <div class="relative w-full aspect-square rounded-2xl overflow-hidden cursor-pointer bg-skyAero-50" onclick="openLightbox(0)">
-                        <img id="heroImage" src="WhatsApp Image 2026-09-26 at 12.11aa.30 AM.jpeg" alt="Ghash Foring Neck Pillow Combo" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                        <img id="heroImage" src="https://ghashforing.sellsurge.shop/media/GHASHFORING/1790466933139_prod_extra_908.jpg" alt="Ghash Foring Neck Pillow Combo" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
                     </div>
                     
                     <button type="button" onclick="prevHeroSlide(event)" aria-label="Previous" class="absolute left-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/95 hover:bg-white text-skyAero-900 shadow-md flex items-center justify-center text-xs transition z-20">
@@ -206,7 +203,7 @@
         </section>
 
         <!-- ============================================== -->
-        <!-- 4. 2-COLUMN CATALOGUE (FULLY MOBILE OPTIMIZED) -->
+        <!-- 4. CLEAN CATALOGUE (FILTER TABS + 2 PER LINE)  -->
         <!-- ============================================== -->
         <section id="productCatalogue" class="space-y-4 sm:space-y-6 scroll-mt-20">
             <div class="text-center max-w-2xl mx-auto space-y-2">
@@ -216,19 +213,32 @@
                 <h2 class="font-brand text-xl sm:text-3xl font-extrabold text-skyAero-950">
                     পছন্দের কালার ও কম্বো কালেকশন
                 </h2>
-                <!-- Customer Guide Notice -->
+                
                 <div class="bg-skyAero-50 border border-skyAero-200 text-skyAero-900 text-[11px] sm:text-xs font-semibold py-2 px-3 sm:px-4 rounded-xl sm:rounded-2xl shadow-sm inline-block max-w-lg mx-auto">
-                    👉 যেকোনো কম্বো বা কালার নিতে <strong>"কার্টে যোগ করুন / Add to Cart"</strong> বাটনে চাপ দিন। সাথে সাথে নিচে ফর্ম যুক্ত হয়ে যাবে।
+                    👉 যেকোনো আইটেম নিতে <strong>"Add to Cart / সিলেক্ট করুন"</strong> বাটনে চাপ দিন। সরাসরি চেকআউটে যুক্ত হয়ে যাবে।
+                </div>
+
+                <!-- Clean Category Filter Tabs -->
+                <div class="flex items-center justify-center gap-1.5 pt-2 text-xs font-bold font-sans">
+                    <button type="button" onclick="filterCategory('all')" id="tab-all" class="px-3.5 py-1.5 rounded-full bg-skyAero-700 text-white shadow-sm transition">
+                        সবগুলো (All)
+                    </button>
+                    <button type="button" onclick="filterCategory('combo')" id="tab-combo" class="px-3.5 py-1.5 rounded-full bg-white text-skyAero-800 border border-skyAero-200 hover:bg-skyAero-50 transition">
+                        কম্বো প্যাক (Combos)
+                    </button>
+                    <button type="button" onclick="filterCategory('single')" id="tab-single" class="px-3.5 py-1.5 rounded-full bg-white text-skyAero-800 border border-skyAero-200 hover:bg-skyAero-50 transition">
+                        ১ পিস (Single Pillows)
+                    </button>
                 </div>
             </div>
 
-            <!-- Product Items: 2 COLUMNS (Strictly 2 per line on mobile & desktop) -->
+            <!-- Product Items: 2 COLUMNS STRICTLY -->
             <div class="grid grid-cols-2 gap-2.5 sm:gap-4 lg:gap-5" id="productsGridContainer">
                 <!-- Dynamically Rendered by JS -->
             </div>
         </section>
 
-        <!-- 5. FEATURES CHECKLIST -->
+        <!-- 5. Features Checklist -->
         <section class="max-w-3xl mx-auto bg-white/90 rounded-2xl sm:rounded-3xl p-4 sm:p-8 border border-skyAero-200 shadow-md backdrop-blur-sm">
             <h3 class="font-brand text-lg sm:text-2xl font-extrabold text-skyAero-950 text-center mb-4 sm:mb-5">
                 কেন Ghash Foring নেক পিলো সেরা?
@@ -244,7 +254,7 @@
                 </div>
                 <div class="flex items-center gap-2 p-2.5 bg-skyAero-50/70 border border-skyAero-100 rounded-xl">
                     <i class="fa-solid fa-circle-check text-skyAero-600"></i>
-                    <span>সহজে বহনযোগ্য লাইটওয়েট ডিজাইন</span>
+                    <span>সহজে বহনযোগ্য লাইটওয়েট ডিজাইন</span>
                 </div>
                 <div class="flex items-center gap-2 p-2.5 bg-skyAero-50/70 border border-skyAero-100 rounded-xl">
                     <i class="fa-solid fa-circle-check text-skyAero-600"></i>
@@ -271,7 +281,7 @@
                     <div>
                         <span class="text-[10px] font-bold tracking-wider text-skyAero-600 uppercase">Step 2: অর্ডার তথ্য</span>
                         <h3 class="font-brand text-xl sm:text-2xl font-extrabold text-skyAero-950 leading-tight">Checkout</h3>
-                        <p class="text-[11px] text-skyAero-700 mt-0.5">ক্যাশ অন ডেলিভারি। পণ্য পেয়ে টাকা পরিশোধ করুন।</p>
+                        <p class="text-[11px] text-skyAero-700 mt-0.5">ক্যাশ অন ডেলিভারি। পণ্য পেয়ে টাকা পরিশোধ করুন।</p>
                     </div>
                     <span class="text-xs font-extrabold bg-skyAero-100 text-skyAero-800 px-3 py-1 rounded-full border border-skyAero-300 font-sans">
                         Store: GS
@@ -285,7 +295,10 @@
                         <div class="flex-1 min-w-0">
                             <span class="text-[10px] font-bold text-skyAero-600 uppercase block">সিলেক্টেড আইটেম</span>
                             <h4 id="checkoutItemTitle" class="text-xs sm:text-sm font-bold text-skyAero-950 truncate">5 Pcs Mega Combo</h4>
-                            <span id="checkoutItemPriceTag" class="text-xs font-extrabold text-skyAero-700">৳1490</span>
+                            <div class="flex items-center gap-2 mt-0.5">
+                                <span id="checkoutItemPriceTag" class="text-xs font-extrabold text-skyAero-700">৳1149</span>
+                                <span id="checkoutItemRegularPrice" class="text-[10px] text-slate-400 line-through">৳1960</span>
+                            </div>
                         </div>
                     </div>
 
@@ -302,15 +315,15 @@
                     <div class="space-y-1 text-xs text-skyAero-800 pt-2 border-t border-skyAero-200/60">
                         <div class="flex justify-between">
                             <span>সাবটোটাল</span>
-                            <span id="subtotalLabel" class="font-bold text-skyAero-950">৳0</span>
+                            <span id="subtotalLabel" class="font-bold text-skyAero-950">৳1149</span>
                         </div>
                         <div class="flex justify-between">
                             <span>ডেলিভারি চার্জ</span>
-                            <span class="font-bold text-emerald-600 uppercase text-[10px] bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">ফ্রি ডেলিভারি</span>
+                            <span id="deliveryChargeLabel" class="font-bold text-skyAero-700">৳80</span>
                         </div>
                         <div class="flex justify-between items-center text-sm font-bold text-skyAero-950 pt-2 border-t border-skyAero-200">
                             <span>সর্বমোট প্রদেয় (COD)</span>
-                            <span id="totalPayableLabel" class="text-base font-black text-skyAero-700">৳0</span>
+                            <span id="totalPayableLabel" class="text-base font-black text-skyAero-700">৳1229</span>
                         </div>
                     </div>
                 </div>
@@ -320,7 +333,7 @@
                     <div>
                         <label class="block text-xs font-bold text-skyAero-900 mb-1">আপনার পূর্ণ নাম (Full Name) *</label>
                         <input type="text" id="custName" placeholder="নাম লিখুন" required class="input-field" onfocus="handleFormInteraction()">
-                        <p class="error-label" id="err-name">দয়া করে আপনার নাম লিখুন।</p>
+                        <p class="error-label" id="err-name">দয়া করে আপনার নাম লিখুন।</p>
                     </div>
 
                     <div>
@@ -335,25 +348,32 @@
                         <p class="error-label" id="err-address">পূর্ণাঙ্গ ঠিকানা প্রদান করুন।</p>
                     </div>
 
+                    <!-- Dynamic Delivery Charge Selector -->
                     <div>
                         <label class="block text-xs font-bold text-skyAero-900 mb-1">ডেলিভারি লোকেশন</label>
                         <div class="grid grid-cols-2 gap-2 text-xs">
-                            <label class="flex items-center gap-2 p-2.5 rounded-xl border border-skyAero-200 bg-skyAero-50/40 cursor-pointer hover:border-skyAero-600 transition">
-                                <input type="radio" name="deliveryArea" value="Inside Dhaka" checked class="accent-skyAero-600">
-                                <span>ঢাকার ভেতরে</span>
+                            <label class="flex items-center justify-between p-2.5 rounded-xl border border-skyAero-200 bg-skyAero-50/40 cursor-pointer hover:border-skyAero-600 transition">
+                                <div class="flex items-center gap-2">
+                                    <input type="radio" name="deliveryArea" value="Inside Dhaka" checked onchange="updateDeliveryFee(80)" class="accent-skyAero-600">
+                                    <span>ঢাকার ভেতরে</span>
+                                </div>
+                                <span class="font-bold text-skyAero-800">৳৮০</span>
                             </label>
-                            <label class="flex items-center gap-2 p-2.5 rounded-xl border border-skyAero-200 bg-skyAero-50/40 cursor-pointer hover:border-skyAero-600 transition">
-                                <input type="radio" name="deliveryArea" value="Outside Dhaka" class="accent-skyAero-600">
-                                <span>ঢাকার বাইরে</span>
+                            <label class="flex items-center justify-between p-2.5 rounded-xl border border-skyAero-200 bg-skyAero-50/40 cursor-pointer hover:border-skyAero-600 transition">
+                                <div class="flex items-center gap-2">
+                                    <input type="radio" name="deliveryArea" value="Outside Dhaka" onchange="updateDeliveryFee(120)" class="accent-skyAero-600">
+                                    <span>ঢাকার বাইরে</span>
+                                </div>
+                                <span class="font-bold text-skyAero-800">৳১২০</span>
                             </label>
                         </div>
                     </div>
 
                     <button type="submit" id="btnSubmitOrder" class="w-full bg-gradient-to-r from-skyAero-600 to-skyAero-700 hover:from-skyAero-700 hover:to-skyAero-800 text-white font-extrabold py-3.5 sm:py-4 rounded-xl text-sm uppercase tracking-wider transition shadow-lg shadow-skyAero-600/30 flex items-center justify-center gap-2">
-                        <span id="btnText">অর্ডার নিশ্চিত করুন (৳<span id="btnPriceLabel">0</span>)</span>
+                        <span id="btnText">অর্ডার নিশ্চিত করুন (৳<span id="btnPriceLabel">1229</span>)</span>
                         <span id="btnLoader" class="hidden spin-loader"></span>
                     </button>
-                    <p class="text-center text-[11px] text-skyAero-700 font-bangla">পার্সেল হাতে পেয়ে চেক করে মূল্য পরিশোধ করুন।</p>
+                    <p class="text-center text-[11px] text-skyAero-700 font-bangla">পার্সেল হাতে পেয়ে চেক করে মূল্য পরিশোধ করুন।</p>
                 </form>
 
                 <!-- Order Success State -->
@@ -362,7 +382,7 @@
                         <i class="fa-solid fa-check"></i>
                     </div>
                     <div>
-                        <h4 class="font-brand text-xl font-bold text-skyAero-950">অর্ডার সফলভাবে সম্পন্ন হয়েছে!</h4>
+                        <h4 class="font-brand text-xl font-bold text-skyAero-950">অর্ডার সফলভাবে সম্পন্ন হয়েছে!</h4>
                         <p class="text-xs text-skyAero-700 mt-1 max-w-sm mx-auto font-bangla">ধন্যবাদ! আমাদের কাস্টমার প্রতিনিধি শীঘ্রই আপনাকে কল করে কনফার্ম করবেন।</p>
                     </div>
                     <a id="whatsappConfirmLink" href="#" target="_blank" class="inline-flex items-center justify-center gap-2 bg-[#25D366] text-white font-bold py-3 px-5 rounded-xl text-xs tracking-wide shadow-md hover:bg-[#20bd5a] transition font-sans">
@@ -388,7 +408,7 @@
     <div class="fixed bottom-0 left-0 w-full bg-white/95 backdrop-blur-md border-t border-skyAero-200 p-2.5 z-40 md:hidden flex items-center justify-between gap-3 shadow-lg font-sans">
         <div class="leading-none pl-1">
             <span class="text-[9px] text-skyAero-600 uppercase font-bold block">মোট মূল্য (COD)</span>
-            <span class="font-extrabold text-skyAero-900 text-sm" id="stickyPriceText">৳0</span>
+            <span class="font-extrabold text-skyAero-900 text-sm" id="stickyPriceText">৳1229</span>
         </div>
         <a href="#checkoutSection" class="bg-gradient-to-r from-skyAero-600 to-skyAero-700 text-white text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-xl shadow-md">
             অর্ডার করুন
@@ -412,7 +432,7 @@
                 <i class="fa-solid fa-chevron-right"></i>
             </button>
         </div>
-        <div class="text-center text-skyAero-200 font-sans text-xs font-bold tracking-widest py-1" id="lightboxCounter">1/9</div>
+        <div class="text-center text-skyAero-200 font-sans text-xs font-bold tracking-widest py-1" id="lightboxCounter">1/14</div>
         <div class="pb-3 px-2">
             <div class="flex items-center justify-center gap-2 overflow-x-auto py-2" id="lightboxThumbnailsContainer"></div>
         </div>
@@ -429,83 +449,168 @@
             STORE_CODE: 'GS'
         };
 
+        // Complete Product List with exact uploaded URLs and Price Tiers
         const PRODUCTS = [
+            // --- COMBOS ---
             {
                 id: 'combo_5',
                 name: '5 Pcs Mega Combo Pack',
-                badge: 'Super Discount',
-                price: 1490,
-                desc: '৫টি প্রিমিয়াম কালার প্যাক',
-                img: 'WhatsApp Image 2026-09-26 at 12.11aa.30 AM.jpeg'
+                category: 'combo',
+                badge: 'Best Value',
+                regularPrice: 1960,
+                price: 1149,
+                desc: '৫টি আকর্ষণীয় কালার কম্বো সেট',
+                img: 'https://ghashforing.sellsurge.shop/media/GHASHFORING/1790466933139_prod_extra_908.jpg'
             },
             {
                 id: 'combo_4',
                 name: '4 Pcs Combo Pack',
+                category: 'combo',
                 badge: 'Pack of 4',
-                price: 1250,
-                desc: '৪টি কমফোর্ট কালার প্যাক',
-                img: 'WhatsApp Image 2026-09-2a6 at 12.11.29 AM.jpeg'
+                regularPrice: 1590,
+                price: 999,
+                desc: '৪টি কমফোর্ট কালার কম্বো',
+                img: 'https://ghashforing.sellsurge.shop/media/GHASHFORING/1790466932528_prod_extra_900.jpg'
             },
             {
                 id: 'combo_3_classic',
                 name: '3 Pcs Combo Pack',
+                category: 'combo',
                 badge: 'Pack of 3',
-                price: 990,
-                desc: 'Sky, Maroon ও Black কম্বো',
-                img: 'WhatsApp Image aa2026-09-26 at 12.11.29 AM.jpeg'
+                regularPrice: 1290,
+                price: 770,
+                desc: '৩টি জনপ্রিয় কালার সেট',
+                img: 'https://ghashforing.sellsurge.shop/media/GHASHFORING/1790466931282_prod_extra_290.jpg'
             },
             {
-                id: 'combo_3_ash',
-                name: '3 Pcs Combo (Ash+Blue+Maroon)',
-                badge: 'Trio Combo',
-                price: 990,
-                desc: 'অ্যাশ গ্রে ও ব্লু স্পেশাল সেট',
-                img: 'WhatsAapp Image 2026-09-26 at 12.11.29 AM.jpeg'
+                id: 'combo_3_pbn',
+                name: '3 Pcs Combo (PBN)',
+                category: 'combo',
+                badge: 'Special Trio',
+                regularPrice: 1290,
+                price: 770,
+                desc: 'Pink, Blue & Navy কম্বিনেশন',
+                img: 'https://ghashforing.sellsurge.shop/media/GHASHFORING/1790466930661_prod_extra_713.jpg'
             },
             {
-                id: 'combo_2_blue_maroon',
-                name: '2 Pcs Combo (Blue + Maroon)',
+                id: 'combo_3_nma',
+                name: '3 Pcs Combo (NMA)',
+                category: 'combo',
+                badge: 'Special Trio',
+                regularPrice: 1290,
+                price: 770,
+                desc: 'Navy, Maroon & Ash কম্বিনেশন',
+                img: 'https://ghashforing.sellsurge.shop/media/GHASHFORING/1790466931931_prod_extra_344.jpg'
+            },
+            {
+                id: 'combo_2_classic',
+                name: '2 Pcs Combo Pack',
+                category: 'combo',
                 badge: 'Pack of 2',
-                price: 750,
+                regularPrice: 990,
+                price: 549,
                 desc: 'কাপল ও ট্রাভেল পার্টনার প্যাক',
-                img: 'WhatsApap Image 2026-09-26 at 12.10.45 AM.jpeg'
+                img: 'https://ghashforing.sellsurge.shop/media/GHASHFORING/1790466930074_prod_extra_906.jpg'
             },
             {
-                id: 'combo_2_pink_blue',
-                name: '2 Pcs Combo (Pink + Sky)',
-                badge: 'Pastel Duo',
-                price: 750,
-                desc: 'সফট ক্লাউড কালার ডুও',
-                img: 'WhatsApaap Image 2026-09-26 at 12.10.44 AM.jpeg'
+                id: 'combo_2_ps',
+                name: '2 Pcs Combo (PS)',
+                category: 'combo',
+                badge: 'Duo Pack',
+                regularPrice: 990,
+                price: 549,
+                desc: 'Pastel Soft Duo কম্বো',
+                img: 'https://ghashforing.sellsurge.shop/media/GHASHFORING/1790466928142_prod_extra_332.jpg'
             },
             {
-                id: 'combo_2_blue_black',
-                name: '2 Pcs Combo (Blue + Black)',
-                badge: 'Pack of 2',
-                price: 750,
-                desc: 'ক্লাসিক ব্লু ও ব্ল্যাক কম্বো',
-                img: 'WhatsApp Imaaage 2026-09-26 at 12.10.44 AM.jpeg'
+                id: 'combo_2_pn',
+                name: '2 Pcs Combo (PN)',
+                category: 'combo',
+                badge: 'Duo Pack',
+                regularPrice: 990,
+                price: 549,
+                desc: 'Pink & Navy স্পেশাল ডুও',
+                img: 'https://ghashforing.sellsurge.shop/media/GHASHFORING/1790466929456_prod_extra_845.jpg'
+            },
+
+            // --- SINGLE PILLOWS ---
+            {
+                id: 'single_sky',
+                name: 'Travel Neck Pillow (Sky)',
+                category: 'single',
+                badge: 'Single 1 Pc',
+                regularPrice: 399,
+                price: 289,
+                desc: 'সফট স্কাই ব্লু ট্রাভেল পিলো',
+                img: 'https://ghashforing.sellsurge.shop/media/GHASHFORING/1790466923031_prod_extra_532.jpg'
             },
             {
-                id: 'single_black',
-                name: '1 Pc Pillow (Jet Black)',
-                badge: 'Single Pack',
-                price: 490,
-                desc: 'ব্রেথেবল ও মেমোরি সফট',
-                img: 'WhatsApp Image 2026-sss09-26 at 12.10.44 AM.jpeg'
+                id: 'single_pink',
+                name: 'Travel Neck Pillow (Pink)',
+                category: 'single',
+                badge: 'Single 1 Pc',
+                regularPrice: 399,
+                price: 289,
+                desc: 'সফট পিংক কালার পিলো',
+                img: 'https://ghashforing.sellsurge.shop/media/GHASHFORING/1790466925016_prod_extra_960.jpg'
             },
             {
-                id: 'single_blue',
-                name: '1 Pc Pillow (Royal Blue)',
-                badge: 'Single Pack',
-                price: 490,
-                desc: 'রয়েল ব্লু কালার আল্ট্রা-সফট',
-                img: 'WhatasApp Image 2026-09-26 at 12.10.43 AM.jpeg'
+                id: 'single_gray',
+                name: 'Travel Neck Pillow (Gray)',
+                category: 'single',
+                badge: 'Single 1 Pc',
+                regularPrice: 399,
+                price: 289,
+                desc: 'ক্লাসিক গ্রে কালার পিলো',
+                img: 'https://ghashforing.sellsurge.shop/media/GHASHFORING/1790466925773_prod_extra_625.jpg'
+            },
+            {
+                id: 'single_black_pillow',
+                name: 'Travel Neck Pillow (Black)',
+                category: 'single',
+                badge: 'Single 1 Pc',
+                regularPrice: 399,
+                price: 289,
+                desc: 'জেট ব্ল্যাক আরামদায়ক পিলো',
+                img: 'https://ghashforing.sellsurge.shop/media/GHASHFORING/1790466926348_prod_extra_277.jpg'
+            },
+            {
+                id: 'single_maroon',
+                name: 'Travel Neck Pillow (Maroon)',
+                category: 'single',
+                badge: 'Single 1 Pc',
+                regularPrice: 399,
+                price: 289,
+                desc: 'রয়েল মেরুন সফট পিলো',
+                img: 'https://ghashforing.sellsurge.shop/media/GHASHFORING/1790466926976_prod_extra_379.jpg'
+            },
+            {
+                id: 'single_china_black',
+                name: 'China Memory Foam (Black)',
+                category: 'single',
+                badge: 'Memory Foam',
+                regularPrice: 399,
+                price: 289,
+                desc: 'মেমোরি ফোম এরগোনমিক সাপোর্ট',
+                img: 'https://ghashforing.sellsurge.shop/media/GHASHFORING/1790466921540_prod_325.jpg'
+            },
+            {
+                id: 'single_china_blue',
+                name: 'China Memory Foam (Blue)',
+                category: 'single',
+                badge: 'Memory Foam',
+                regularPrice: 399,
+                price: 289,
+                desc: 'মেমোরি ফোম এরগোনমিক সাপোর্ট',
+                img: 'https://ghashforing.sellsurge.shop/media/GHASHFORING/1790466922131_prod_778.jpg'
             }
         ];
 
         let selectedProductId = PRODUCTS[0].id;
         let currentQuantity = 1;
+        let deliveryFee = 80;
+        let activeCategory = 'all';
+
         let isPixelActive = false;
         let activePixelId = null;
         let hasPurchasedFired = false;
@@ -513,18 +618,44 @@
         let currentHeroIndex = 0;
         let currentLightboxIndex = 0;
 
-        // Render 2 Products Per Line (Strictly 2 per line on mobile & desktop)
+        // Filter Category Handler
+        function filterCategory(cat) {
+            activeCategory = cat;
+            ['all', 'combo', 'single'].forEach(c => {
+                const btn = document.getElementById(`tab-${c}`);
+                if (!btn) return;
+                if (c === cat) {
+                    btn.className = "px-3.5 py-1.5 rounded-full bg-skyAero-700 text-white shadow-sm transition";
+                } else {
+                    btn.className = "px-3.5 py-1.5 rounded-full bg-white text-skyAero-800 border border-skyAero-200 hover:bg-skyAero-50 transition";
+                }
+            });
+            renderProductsGrid();
+        }
+
+        // Render 2 Products Per Line (Clean & Organized)
         function renderProductsGrid() {
             const container = document.getElementById('productsGridContainer');
             if (!container) return;
 
-            container.innerHTML = PRODUCTS.map((p, idx) => `
+            const filteredList = activeCategory === 'all' 
+                ? PRODUCTS 
+                : PRODUCTS.filter(p => p.category === activeCategory);
+
+            container.innerHTML = filteredList.map((p) => {
+                const originalIndex = PRODUCTS.findIndex(item => item.id === p.id);
+                const discount = Math.round(((p.regularPrice - p.price) / p.regularPrice) * 100);
+
+                return `
                 <div class="bg-white/95 rounded-xl sm:rounded-2xl border ${p.id === selectedProductId ? 'border-skyAero-600 ring-2 ring-skyAero-400/30' : 'border-skyAero-200/80'} p-2 sm:p-3.5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
                     <div>
-                        <div class="relative aspect-square rounded-lg sm:rounded-xl overflow-hidden bg-skyAero-50 cursor-pointer mb-2" onclick="openLightbox(${idx})">
+                        <div class="relative aspect-square rounded-lg sm:rounded-xl overflow-hidden bg-skyAero-50 cursor-pointer mb-2" onclick="openLightbox(${originalIndex})">
                             <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
-                            <span class="absolute top-1 left-1 sm:top-1.5 sm:left-1.5 bg-skyAero-700 text-white text-[8px] sm:text-[10px] font-extrabold uppercase px-1.5 py-0.5 rounded shadow-sm">
+                            <span class="absolute top-1 left-1 sm:top-1.5 sm:left-1.5 bg-skyAero-800 text-white text-[8px] sm:text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded shadow-sm">
                                 ${p.badge}
+                            </span>
+                            <span class="absolute bottom-1 right-1 bg-amber-500 text-slate-950 text-[8px] sm:text-[9px] font-extrabold px-1.5 py-0.5 rounded shadow-sm">
+                                ${discount}% OFF
                             </span>
                         </div>
                         <h4 class="font-brand font-bold text-[11px] sm:text-sm text-skyAero-950 line-clamp-1 leading-tight">${p.name}</h4>
@@ -533,19 +664,20 @@
 
                     <div class="mt-2 pt-2 border-t border-skyAero-100 flex flex-col gap-1.5">
                         <div class="flex items-center justify-between">
-                            <span class="text-[9px] text-skyAero-500 font-sans font-semibold">Price:</span>
-                            <span class="text-xs sm:text-base font-black text-skyAero-900 font-sans">৳${p.price}</span>
+                            <span class="text-[10px] text-slate-400 line-through font-sans">৳${p.regularPrice}</span>
+                            <span class="text-xs sm:text-base font-black text-skyAero-800 font-sans">৳${p.price}</span>
                         </div>
-                        <button type="button" onclick="addToCartAndCheckout('${p.id}')" class="w-full bg-skyAero-600 active:bg-skyAero-800 hover:bg-skyAero-700 text-white text-[10px] sm:text-xs font-bold py-1.5 sm:py-2 px-2 rounded-lg sm:rounded-xl transition flex items-center justify-center gap-1 shadow-sm">
+                        <button type="button" onclick="addToCartAndCheckout('${p.id}')" class="w-full ${p.id === selectedProductId ? 'bg-emerald-600 hover:bg-emerald-700 text-white' : 'bg-skyAero-600 hover:bg-skyAero-700 text-white'} text-[10px] sm:text-xs font-bold py-1.5 sm:py-2 px-2 rounded-lg sm:rounded-xl transition flex items-center justify-center gap-1 shadow-sm">
                             <i class="fa-solid fa-cart-plus text-[10px]"></i>
-                            <span>Add to Cart</span>
+                            <span>${p.id === selectedProductId ? 'Selected' : 'Add to Cart'}</span>
                         </button>
                     </div>
                 </div>
-            `).join('');
+                `;
+            }).join('');
         }
 
-        // Add to Cart handler with smooth mobile scroll
+        // Add to Cart handler
         function addToCartAndCheckout(productId) {
             selectedProductId = productId;
             currentQuantity = 1;
@@ -559,17 +691,27 @@
             }
         }
 
+        function updateDeliveryFee(fee) {
+            deliveryFee = fee;
+            document.getElementById('deliveryChargeLabel').textContent = `৳${fee}`;
+            updateSummary();
+        }
+
         function updateSummary() {
             const product = PRODUCTS.find(p => p.id === selectedProductId) || PRODUCTS[0];
-            const total = product.price * currentQuantity;
+            const subtotal = product.price * currentQuantity;
+            const total = subtotal + deliveryFee;
 
             const previewImg = document.getElementById('checkoutPreviewImg');
             if (previewImg) previewImg.src = product.img;
 
             document.getElementById('checkoutItemTitle').textContent = product.name;
             document.getElementById('checkoutItemPriceTag').textContent = `৳${product.price}`;
+            document.getElementById('checkoutItemRegularPrice').textContent = `৳${product.regularPrice}`;
             document.getElementById('quantityDisplay').textContent = currentQuantity;
-            document.getElementById('subtotalLabel').textContent = `৳${total}`;
+            
+            document.getElementById('subtotalLabel').textContent = `৳${subtotal}`;
+            document.getElementById('deliveryChargeLabel').textContent = `৳${deliveryFee}`;
             document.getElementById('totalPayableLabel').textContent = `৳${total}`;
             document.getElementById('btnPriceLabel').textContent = `${total}`;
             document.getElementById('stickyPriceText').textContent = `৳${total}`;
@@ -678,7 +820,7 @@
                 const prod = PRODUCTS.find(p => p.id === selectedProductId) || PRODUCTS[0];
                 fbq('track', 'InitiateCheckout', {
                     content_name: prod.name,
-                    value: prod.price * currentQuantity,
+                    value: prod.price * currentQuantity + deliveryFee,
                     currency: 'BDT'
                 });
             }
@@ -719,19 +861,20 @@
             btnLoader.classList.remove('hidden');
 
             const prod = PRODUCTS.find(p => p.id === selectedProductId) || PRODUCTS[0];
-            const totalAmount = prod.price * currentQuantity;
+            const subtotal = prod.price * currentQuantity;
+            const totalAmount = subtotal + deliveryFee;
             const eventId = 'pur_' + Date.now() + '_' + Math.random().toString(36).substring(2, 7);
 
             const orderPayload = {
                 store_name: CONFIG.STORE_NAME,
-                store_code: CONFIG.STORE_CODE, // 'GS'
+                store_code: CONFIG.STORE_CODE,
                 product: 'Travel Neck Pillow',
                 package: prod.name,
                 quantity: `${currentQuantity}x ${prod.name}`,
                 name: name,
                 phone: phone,
                 address: address,
-                deliveryArea: delArea,
+                deliveryArea: `${delArea} (৳${deliveryFee})`,
                 payment: 'Cash on Delivery',
                 total: `৳${totalAmount}`,
                 total_raw: totalAmount,
@@ -759,7 +902,7 @@
                     }
                 }
 
-                const waMsg = encodeURIComponent(`Hello ${CONFIG.STORE_NAME},\nI placed an order on your store:\nItem: ${orderPayload.quantity}\nTotal: ${orderPayload.total}\nPhone: ${orderPayload.phone}\nPlease confirm shipment.`);
+                const waMsg = encodeURIComponent(`Hello ${CONFIG.STORE_NAME},\nI placed an order on your store:\nItem: ${orderPayload.quantity}\nTotal: ${orderPayload.total} (including delivery)\nPhone: ${orderPayload.phone}\nPlease confirm shipment.`);
                 document.getElementById('whatsappConfirmLink').href = `https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=${waMsg}`;
 
                 orderForm.classList.add('hidden');
@@ -767,7 +910,7 @@
 
             } catch (err) {
                 console.error('Order error:', err);
-                alert('অর্ডার সম্পন্ন করা সম্ভব হয়নি। অনুগ্রহ করে হোয়াটসঅ্যাপে যোগাযোগ করুন।');
+                alert('অর্ডার সম্পন্ন করা সম্ভব হয়নি। অনুগ্রহ করে হোয়াটসঅ্যাপে যোগাযোগ করুন।');
             } finally {
                 btnSubmit.disabled = false;
                 btnText.classList.remove('hidden');
@@ -775,9 +918,7 @@
             }
         });
 
-        /* ============================================== */
-        /* SKY VIBE FLOATING PARTICLES                    */
-        /* ============================================== */
+        // Floating Soft Sky Particles
         function initSkyVibeEffect() {
             const canvas = document.getElementById('skyCanvas');
             const ctx = canvas.getContext('2d');
