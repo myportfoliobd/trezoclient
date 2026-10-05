@@ -44,6 +44,7 @@
   </script>
 
   <style>
+    html, body { overflow-x: hidden; width: 100%; max-width: 100vw; }
     body { font-family: 'Hind Siliguri', 'Inter', sans-serif; background-color: #f0f7fc; }
     .num { font-family: 'Inter', 'Hind Siliguri', sans-serif; }
     ::-webkit-scrollbar { width: 5px; height: 5px; }
@@ -52,6 +53,54 @@
     .filter-card { transition: all 0.2s ease; cursor: pointer; }
     .filter-card:active { transform: scale(0.97); }
   </style>
+
+  <!-- 🛡️ Anti-Inspect & Code Protection -->
+  <script>
+    (function() {
+      // 1. Disable Right Click Context Menu (allows inside input/textarea for copy-paste)
+      document.addEventListener('contextmenu', function(e) {
+        var tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : '';
+        if (tag === 'input' || tag === 'textarea' || (e.target && e.target.isContentEditable)) {
+          return true;
+        }
+        e.preventDefault();
+        return false;
+      }, false);
+
+      // 2. Disable F12, Ctrl+U, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C, Ctrl+S
+      document.addEventListener('keydown', function(e) {
+        // F12 key
+        if (e.key === 'F12' || e.keyCode === 123) {
+          e.preventDefault();
+          e.stopPropagation();
+          return false;
+        }
+        // Ctrl+U (View Source)
+        if ((e.ctrlKey || e.metaKey) && (e.key === 'u' || e.key === 'U' || e.keyCode === 85)) {
+          e.preventDefault();
+          e.stopPropagation();
+          return false;
+        }
+        // Ctrl+Shift+I (DevTools), Ctrl+Shift+J (Console), Ctrl+Shift+C (Inspect)
+        if ((e.ctrlKey || e.metaKey) && e.shiftKey && (
+            e.key === 'I' || e.key === 'i' || e.keyCode === 73 ||
+            e.key === 'J' || e.key === 'j' || e.keyCode === 74 ||
+            e.key === 'C' || e.key === 'c' || e.keyCode === 67
+        )) {
+          e.preventDefault();
+          e.stopPropagation();
+          return false;
+        }
+        // Ctrl+S (Save webpage)
+        if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'S' || e.keyCode === 83)) {
+          e.preventDefault();
+          e.stopPropagation();
+          return false;
+        }
+      }, false);
+    })();
+  </script>
+
 </head>
 
 <body class="text-slate-800 antialiased min-h-screen flex flex-col lg:flex-row">
@@ -63,14 +112,14 @@
         <i class="fa-solid fa-shield-halved"></i>
       </div>
       <h2 class="text-2xl font-black text-slate-900">Ghash Foring এডমিন</h2>
-      <p class="text-xs text-slate-500 mt-1 mb-5">ড্যাশবোর্ড অ্যাক্সেস করতে পাসওয়ার্ড দিন</p>
+      <p class="text-xs text-slate-500 mt-1 mb-5"><span data-i18n="login_subtitle">ড্যাশবোর্ড অ্যাক্সেস করতে পাসওয়ার্ড দিন</span></p>
       
       <div class="space-y-3">
-        <input type="password" id="adminPass" placeholder="পাসওয়ার্ড লিখুন..." 
+        <input type="password" id="adminPass" placeholder="পাসওয়ার্ড লিখুন..." data-i18n-ph="pass_placeholder" 
           onkeydown="if(event.key==='Enter') checkAuth()"
           class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-center font-medium text-slate-800 outline-none focus:border-sky-600 focus:bg-white transition" />
         <button onclick="checkAuth()" class="w-full bg-gradient-to-r from-sky-600 to-sky-700 hover:from-sky-700 hover:to-sky-800 active:scale-[0.98] text-white font-bold py-3 rounded-xl shadow-lg transition">
-          প্রবেশ করুন <i class="fa-solid fa-arrow-right ml-1"></i>
+          <span data-i18n="btn_login">প্রবেশ করুন</span> <i class="fa-solid fa-arrow-right ml-1"></i>
         </button>
       </div>
       <p id="loginError" class="text-rose-500 text-xs font-semibold mt-3 hidden flex items-center justify-center gap-1">
@@ -80,11 +129,11 @@
   </div>
 
   <!-- ================= 📦 SHIPPING STEPS MODAL ================= -->
-  <div id="shippingModal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center z-50 p-4 hidden transition-all">
-    <div class="bg-white rounded-3xl max-w-lg w-full shadow-2xl border border-slate-100 overflow-hidden flex flex-col">
+  <div id="shippingModal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center z-50 p-2 sm:p-4 hidden transition-all">
+    <div class="bg-white rounded-3xl max-w-lg w-full max-h-[92vh] shadow-2xl border border-slate-100 overflow-hidden flex flex-col mx-2 sm:mx-0">
       <div class="bg-sky-950 text-white px-5 py-4 flex items-center justify-between">
         <div>
-          <div class="text-[11px] text-sky-300 font-semibold">Ghash Foring শিপিং ট্র্যাকিং ও ধাপ</div>
+          <div class="text-[11px] text-sky-300 font-semibold"><span data-i18n="modal_shipping_title">Ghash Foring শিপিং ট্র্যাকিং ও ধাপ</span></div>
           <h3 class="font-extrabold text-base flex items-center gap-1.5" id="stepModalOrderId">#GS-000000</h3>
         </div>
         <button onclick="closeShippingModal()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-sm transition">
@@ -92,7 +141,7 @@
         </button>
       </div>
 
-      <div class="p-5 space-y-5">
+      <div class="p-5 space-y-4 overflow-y-auto">
         <div class="bg-sky-50/70 p-3.5 rounded-2xl border border-sky-100 text-xs flex justify-between items-center">
           <div>
             <div class="font-bold text-slate-900" id="stepModalCustomer">Customer Name</div>
@@ -104,13 +153,22 @@
           </div>
         </div>
 
+        <!-- BDCourier Fraud Risk & History Card in Modal -->
+        <div id="stepModalFraudBox" class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200 space-y-2 text-xs">
+          <div class="flex items-center justify-between font-bold text-slate-800">
+            <span class="flex items-center gap-1.5"><i class="fa-solid fa-shield-halved text-emerald-600"></i> BDCourier ফ্রড ও ডেলিভারি হিস্ট্রি:</span>
+            <div id="stepModalFraudBadge"></div>
+          </div>
+          <div id="stepModalFraudDetails" class="text-[11px] text-slate-600 leading-relaxed"></div>
+        </div>
+
         <!-- Stepper Progress -->
         <div class="space-y-4" id="stepperContainer"></div>
 
         <!-- Quick Action Inside Modal -->
         <div class="pt-2 border-t border-slate-100 flex items-center justify-between gap-2">
           <div id="stepModalSteadfastBtn" class="flex-1"></div>
-          <button onclick="closeShippingModal()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl">বন্ধ করুন</button>
+          <button onclick="closeShippingModal()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl" data-i18n="btn_close">বন্ধ করুন</button>
         </div>
       </div>
     </div>
@@ -122,7 +180,7 @@
       <div class="bg-sky-950 text-white px-5 py-4 flex items-center justify-between">
         <div class="flex items-center gap-2">
           <span class="w-8 h-8 rounded-xl bg-white/10 flex items-center justify-center text-sm"><i class="fa-solid fa-cart-plus"></i></span>
-          <h3 class="font-bold text-sm">নতুন ম্যানুয়াল অর্ডার (Ghash Foring)</h3>
+          <h3 class="font-bold text-sm"><span data-i18n="modal_new_order_title">নতুন ম্যানুয়াল অর্ডার (Ghash Foring)</span></h3>
         </div>
         <button onclick="closeNewOrderModal()" class="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-xs">
           <i class="fa-solid fa-xmark"></i>
@@ -131,17 +189,17 @@
 
       <form id="manualOrderForm" onsubmit="submitManualOrder(event)" class="p-5 overflow-y-auto space-y-3 text-xs sm:text-sm">
         <div>
-          <label class="block font-bold text-slate-700 mb-1">কাস্টমারের নাম <span class="text-rose-500">*</span></label>
+          <label class="block font-bold text-slate-700 mb-1"><span data-i18n="lbl_cust_name">কাস্টমারের নাম</span> <span class="text-rose-500">*</span></label>
           <input type="text" id="mCustName" required placeholder="যেমন: রাসেল আহমেদ" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 outline-none focus:border-sky-600 focus:bg-white" />
         </div>
 
         <div>
-          <label class="block font-bold text-slate-700 mb-1">মোবাইল নাম্বার <span class="text-rose-500">*</span></label>
+          <label class="block font-bold text-slate-700 mb-1"><span data-i18n="lbl_cust_phone">মোবাইল নাম্বার</span> <span class="text-rose-500">*</span></label>
           <input type="tel" id="mCustPhone" required placeholder="017xxxxxxxx" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 outline-none focus:border-sky-600 focus:bg-white" />
         </div>
 
         <div>
-          <label class="block font-bold text-slate-700 mb-1">সম্পূর্ণ ডেলিভারি ঠিকানা <span class="text-rose-500">*</span></label>
+          <label class="block font-bold text-slate-700 mb-1"><span data-i18n="lbl_cust_address">সম্পূর্ণ ডেলিভারি ঠিকানা</span> <span class="text-rose-500">*</span></label>
           <textarea id="mCustAddress" required rows="2" placeholder="বাসা/রোড, থানা, জেলা (মিনিমাম ৫ অক্ষর)" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2 outline-none focus:border-sky-600 focus:bg-white resize-none"></textarea>
         </div>
 
@@ -149,23 +207,23 @@
           <div>
             <label class="block font-bold text-slate-700 mb-1">প্যাকেজ / কম্বো বাছাই</label>
             <select id="mPackage" onchange="updateManualPrice()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 outline-none focus:border-sky-600 font-semibold cursor-pointer">
-              <option value="5 Pcs Mega Combo Pack" data-price="1149" selected>৫ পিস মেগা কম্বো — ৳১,১৪৯</option>
+              <option value="5 Pcs Mega Combo Pack" data-price="1190" selected>৫ পিস মেগা কম্বো — ৳১,১৯০</option>
               <option value="4 Pcs Combo Pack" data-price="999">৪ পিস কম্বো প্যাক — ৳৯৯৯</option>
-              <option value="3 Pcs Combo Pack" data-price="770">৩ পিস ক্লাসিক কম্বো — ৳৭৭০</option>
-              <option value="3 Pcs Combo (PBN)" data-price="770">৩ পিস কম্বো (Pink+Blue+Navy) — ৳৭৭০</option>
-              <option value="3 Pcs Combo (NMA)" data-price="770">৩ পিস কম্বো (Navy+Maroon+Ash) — ৳৭৭০</option>
-              <option value="2 Pcs Combo Pack" data-price="549">২ পিস কাপল কম্বো — ৳৫৪৯</option>
-              <option value="2 Pcs Combo (PS)" data-price="549">২ পিস কম্বো (Pink+Sky) — ৳৫৪৯</option>
-              <option value="Travel Neck Pillow (Navy)" data-price="289">সিঙ্গেল পিলো (Navy Blue) — ৳২৮৯</option>
-              <option value="Travel Neck Pillow (Black)" data-price="289">সিঙ্গেল পিলো (Black) — ৳২৮৯</option>
-              <option value="Travel Neck Pillow (Maroon)" data-price="289">সিঙ্গেল পিলো (Maroon) — ৳২৮৯</option>
-              <option value="China Memory Foam (Black)" data-price="289">মেমোরি ফোম (Black) — ৳২৮৯</option>
-              <option value="China Memory Foam (Blue)" data-price="289">মেমোরি ফোম (Blue) — ৳২৮৯</option>
+              <option value="3 Pcs Combo Pack" data-price="790">৩ পিস ক্লাসিক কম্বো — ৳৭৯০</option>
+              <option value="3 Pcs Combo (PBN)" data-price="790">৩ পিস কম্বো (Pink+Blue+Navy) — ৳৭৯০</option>
+              <option value="3 Pcs Combo (NMA)" data-price="790">৩ পিস কম্বো (Navy+Maroon+Ash) — ৳৭৯০</option>
+              <option value="2 Pcs Combo Pack" data-price="569">২ পিস কাপল কম্বো — ৳৫৬৯</option>
+              <option value="2 Pcs Combo (PS)" data-price="569">২ পিস কম্বো (Pink+Sky) — ৳৫৬৯</option>
+              <option value="Travel Neck Pillow (Navy)" data-price="299">সিঙ্গেল পিলো (Navy Blue) — ৳২৯৯</option>
+              <option value="Travel Neck Pillow (Black)" data-price="299">সিঙ্গেল পিলো (Black) — ৳২৯৯</option>
+              <option value="Travel Neck Pillow (Maroon)" data-price="299">সিঙ্গেল পিলো (Maroon) — ৳২৯৯</option>
+              <option value="China Memory Foam (Black)" data-price="990">মেমোরি ফোম (Black) — ৳৯৯০</option>
+              <option value="China Memory Foam (Blue)" data-price="990">মেমোরি ফোম (Blue) — ৳৯৯০</option>
             </select>
           </div>
 
           <div>
-            <label class="block font-bold text-slate-700 mb-1">ডেলিভারি এলাকা</label>
+            <label class="block font-bold text-slate-700 mb-1" data-i18n="lbl_area">ডেলিভারি এলাকা</label>
             <select id="mArea" onchange="updateManualPrice()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 outline-none focus:border-sky-600 font-semibold cursor-pointer">
               <option value="Inside Dhaka (৳80)" data-charge="80" selected>ঢাকার ভেতরে (৳৮০)</option>
               <option value="Outside Dhaka (৳120)" data-charge="120">ঢাকার বাইরে (৳১২০)</option>
@@ -174,12 +232,12 @@
         </div>
 
         <div>
-          <label class="block font-bold text-slate-700 mb-1">সর্বমোট বিল (৳)</label>
-          <input type="text" id="mTotalBill" value="৳1229" class="w-full bg-slate-100 text-sky-950 font-black border border-slate-200 rounded-xl px-3.5 py-2.5 outline-none num text-base" />
+          <label class="block font-bold text-slate-700 mb-1" data-i18n="lbl_total">সর্বমোট বিল (৳)</label>
+          <input type="text" id="mTotalBill" value="৳1270" class="w-full bg-slate-100 text-sky-950 font-black border border-slate-200 rounded-xl px-3.5 py-2.5 outline-none num text-base" />
         </div>
 
         <button type="submit" id="createOrderBtn" class="w-full bg-gradient-to-r from-sky-600 to-sky-700 hover:from-sky-700 hover:to-sky-800 active:scale-[0.98] text-white font-bold py-3 rounded-xl shadow-lg transition flex items-center justify-center gap-2 text-xs sm:text-sm mt-2">
-          <i class="fa-solid fa-circle-check"></i> অর্ডার কনফার্ম ও সেভ করুন
+          <i class="fa-solid fa-circle-check"></i> <span data-i18n="btn_confirm_order">অর্ডার কনফার্ম ও সেভ করুন</span>
         </button>
       </form>
     </div>
@@ -262,7 +320,7 @@
         </div>
 
         <button type="submit" id="saveCfgBtn" class="w-full bg-sky-900 hover:bg-sky-950 text-white font-bold py-3 rounded-xl shadow-lg transition flex items-center justify-center gap-2 text-xs sm:text-sm">
-          <i class="fa-solid fa-floppy-disk"></i> সেটিংস সংরক্ষণ করুন
+          <i class="fa-solid fa-floppy-disk"></i> <span data-i18n="btn_save_settings">সেটিংস সংরক্ষণ করুন</span>
         </button>
       </form>
     </div>
@@ -289,18 +347,29 @@
       <button onclick="openSettingsModal()" class="text-[10px] text-sky-700 font-bold hover:underline">Change</button>
     </div>
 
+    <!-- Language Selector (Sidebar) -->
+    <div class="mb-3">
+      <button id="sidebarLangToggleBtn" onclick="toggleLanguage()" class="w-full flex items-center justify-between px-3 py-2 rounded-xl border border-sky-200 bg-white hover:bg-sky-50 text-slate-700 transition active:scale-98 cursor-pointer font-bold text-xs shadow-sm">
+        <span class="flex items-center gap-2">
+          <i class="fa-solid fa-globe text-sky-600 text-sm"></i>
+          <span data-i18n="lang_label">ভাষা / Language</span>
+        </span>
+        <span class="bg-sky-100 text-sky-800 px-2 py-0.5 rounded-md border border-sky-300 text-[10px] font-extrabold uppercase" id="sidebarLangVal">বাংলা</span>
+      </button>
+    </div>
+
     <nav class="space-y-1 text-xs font-semibold text-slate-600">
       <a href="#" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl bg-sky-50 text-sky-900 font-bold border border-sky-100">
-        <i class="fa-solid fa-house w-4 text-center text-sky-600"></i> ড্যাশবোর্ড
+        <i class="fa-solid fa-house w-4 text-center text-sky-600"></i> <span data-i18n="nav_dashboard">ড্যাশবোর্ড</span>
       </a>
       <button onclick="openNewOrderModal()" class="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-slate-50 transition text-left">
-        <i class="fa-solid fa-cart-plus w-4 text-center text-slate-400"></i> নতুন ম্যানুয়াল অর্ডার
+        <i class="fa-solid fa-cart-plus w-4 text-center text-slate-400"></i> <span data-i18n="nav_manual_order">নতুন ম্যানুয়াল অর্ডার</span>
       </button>
       <button onclick="openSettingsModal()" class="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-slate-50 transition text-left">
-        <i class="fa-solid fa-gear w-4 text-center text-slate-400"></i> সেটিংস (API & Pixel)
+        <i class="fa-solid fa-gear w-4 text-center text-slate-400"></i> <span data-i18n="nav_settings">সেটিংস (API & Pixel)</span>
       </button>
       <button onclick="exportToCSV()" class="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl hover:bg-slate-50 transition text-left">
-        <i class="fa-solid fa-file-excel w-4 text-center text-slate-400"></i> এক্সেল / CSV ডাউনলোড
+        <i class="fa-solid fa-file-excel w-4 text-center text-slate-400"></i> <span data-i18n="nav_export_excel">এক্সেল / CSV ডাউনলোড</span>
       </button>
     </nav>
 
@@ -317,21 +386,26 @@
   <div class="flex-1 flex flex-col min-w-0">
 
     <!-- Top Header -->
-    <header class="bg-white border-b border-sky-100 px-4 lg:px-7 py-3.5 sticky top-0 z-30 flex items-center justify-between gap-2 shadow-sm">
+    <header class="bg-white border-b border-sky-100 px-3 sm:px-4 lg:px-7 py-2.5 sm:py-3 sticky top-0 z-30 shadow-sm w-full max-w-full overflow-hidden flex items-center justify-between gap-1.5 sm:gap-2">
       <div class="flex items-center gap-3">
         <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-sky-600 to-sky-500 text-white font-black flex items-center justify-center text-sm lg:hidden font-brand">GF</div>
         <div>
           <h2 class="text-base lg:text-lg font-black text-slate-900 flex items-center gap-1.5 leading-tight">
             <span>Ghash Foring ড্যাশবোর্ড</span>
-            <span class="text-[10px] bg-sky-100 text-sky-800 font-extrabold px-2 py-0.5 rounded-full uppercase">GS Live</span>
+            <span class="hidden md:inline-flex text-[10px] bg-sky-100 text-sky-800 font-extrabold px-2 py-0.5 rounded-full uppercase">GS Live</span>
           </h2>
-          <p class="text-[10px] text-slate-400 font-medium">fancy-water-9087 লাইভ অর্ডার ম্যানেজমেন্ট ও শিপিং হাব</p>
+          <p class="hidden sm:block text-[10px] text-slate-400 font-medium">fancy-water-9087 লাইভ অর্ডার ম্যানেজমেন্ট ও শিপিং হাব</p>
         </div>
       </div>
 
       <div class="flex items-center gap-2">
+        <!-- Bilingual Language Switcher -->
+        <button id="langToggleBtn" onclick="toggleLanguage()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-sky-200 bg-white hover:bg-sky-50 text-slate-700 shadow-sm transition active:scale-95 cursor-pointer font-bold text-xs" title="Switch Language / ভাষা পরিবর্তন">
+          <span id="langFlag">🇬🇧</span>
+          <span id="langText">English</span>
+        </button>
         <button onclick="openNewOrderModal()" class="inline-flex items-center gap-1.5 bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold px-3 py-2 rounded-xl shadow-sm transition">
-          <i class="fa-solid fa-plus text-[10px]"></i> <span class="hidden sm:inline">নতুন অর্ডার</span>
+          <i class="fa-solid fa-plus text-[10px]"></i> <span class="hidden sm:inline" data-i18n="btn_new_order">নতুন অর্ডার</span>
         </button>
         <button onclick="openSettingsModal()" class="w-9 h-9 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 rounded-xl flex items-center justify-center text-xs transition" title="সেটিংস">
           <i class="fa-solid fa-gear"></i>
@@ -351,7 +425,7 @@
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-2.5 lg:gap-4">
         <div class="bg-gradient-to-br from-sky-950 to-sky-900 text-white rounded-2xl p-4 shadow-sm flex flex-col justify-between">
           <div class="flex justify-between items-center text-sky-200 text-xs font-semibold">
-            <span id="salesCardTitle">ফিল্টার মোট সেলস</span>
+            <span id="salesCardTitle" data-i18n="stat_total_sales">ফিল্টার মোট সেলস</span>
             <i class="fa-solid fa-sack-dollar text-white"></i>
           </div>
           <div class="my-2">
@@ -374,14 +448,14 @@
 
         <div class="bg-white border border-sky-100 rounded-2xl p-4 shadow-sm flex flex-col justify-between">
           <div class="flex justify-between items-center text-emerald-700 text-xs font-semibold">
-            <span>কনফার্মড অর্ডার</span>
+            <span data-i18n="stat_confirmed">কনফার্মড অর্ডার</span>
             <i class="fa-solid fa-circle-check"></i>
           </div>
           <div class="my-2 flex items-baseline gap-1.5">
             <h3 id="statConfirmedCount" class="text-xl lg:text-2xl font-black text-emerald-700 num">০</h3>
-            <span class="text-[11px] text-slate-400 font-bold">টি</span>
+            <span class="text-[11px] text-slate-400 font-bold" data-i18n="stat_unit">টি</span>
           </div>
-          <p class="text-[10px] text-slate-500 font-medium">মূল্য: <strong id="statConfirmedAmount" class="text-emerald-700 font-bold num">৳০</strong></p>
+          <p class="text-[10px] text-slate-500 font-medium"><span data-i18n="stat_value">মূল্য:</span> <strong id="statConfirmedAmount" class="text-emerald-700 font-bold num">৳০</strong></p>
         </div>
 
         <div class="bg-white border border-sky-100 rounded-2xl p-4 shadow-sm flex flex-col justify-between">
@@ -393,7 +467,7 @@
             <h3 id="statCancelledCount" class="text-xl lg:text-2xl font-black text-rose-600 num">০</h3>
             <span class="text-[11px] text-slate-400 font-bold">টি</span>
           </div>
-          <p class="text-[10px] text-slate-500 font-medium">লস: <strong id="statCancelledAmount" class="text-rose-600 font-bold num">৳০</strong></p>
+          <p class="text-[10px] text-slate-500 font-medium"><span data-i18n="stat_loss">লস:</span> <strong id="statCancelledAmount" class="text-rose-600 font-bold num">৳০</strong></p>
         </div>
       </div>
 
@@ -408,7 +482,7 @@
             <div class="flex items-center gap-2">
               <span class="w-7 h-7 rounded-lg bg-white/15 flex items-center justify-center text-xs"><i class="fa-solid fa-border-all"></i></span>
               <div>
-                <div class="text-[11px] font-bold">সব অর্ডার</div>
+                <div class="text-[11px] font-bold" data-i18n="filter_all">সব অর্ডার</div>
                 <div id="quickCount-ALL" class="text-sm font-black num leading-tight">০</div>
               </div>
             </div>
@@ -419,7 +493,7 @@
             <div class="flex items-center gap-2">
               <span class="w-7 h-7 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center text-xs"><i class="fa-solid fa-spinner"></i></span>
               <div>
-                <div class="text-[11px] font-semibold text-slate-500">প্রসেসিং</div>
+                <div class="text-[11px] font-semibold text-slate-500" data-i18n="filter_pending">প্রসেসিং</div>
                 <div id="quickCount-Pending" class="text-sm font-black text-slate-900 num leading-tight">০</div>
               </div>
             </div>
@@ -430,7 +504,7 @@
             <div class="flex items-center gap-2">
               <span class="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center text-xs"><i class="fa-solid fa-check"></i></span>
               <div>
-                <div class="text-[11px] font-semibold text-slate-500">কনফার্মড</div>
+                <div class="text-[11px] font-semibold text-slate-500" data-i18n="filter_confirmed">কনফার্মড</div>
                 <div id="quickCount-Confirmed" class="text-sm font-black text-slate-900 num leading-tight">০</div>
               </div>
             </div>
@@ -441,7 +515,7 @@
             <div class="flex items-center gap-2">
               <span class="w-7 h-7 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center text-xs"><i class="fa-solid fa-truck-fast"></i></span>
               <div>
-                <div class="text-[11px] font-semibold text-slate-500">শিপড</div>
+                <div class="text-[11px] font-semibold text-slate-500" data-i18n="filter_shipped">শিপড</div>
                 <div id="quickCount-Shipped" class="text-sm font-black text-slate-900 num leading-tight">০</div>
               </div>
             </div>
@@ -452,7 +526,7 @@
             <div class="flex items-center gap-2">
               <span class="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center text-xs"><i class="fa-solid fa-circle-check"></i></span>
               <div>
-                <div class="text-[11px] font-semibold text-slate-500">ডেলিভার্ড</div>
+                <div class="text-[11px] font-semibold text-slate-500" data-i18n="filter_delivered">ডেলিভার্ড</div>
                 <div id="quickCount-Delivered" class="text-sm font-black text-slate-900 num leading-tight">০</div>
               </div>
             </div>
@@ -463,7 +537,7 @@
             <div class="flex items-center gap-2">
               <span class="w-7 h-7 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center text-xs"><i class="fa-solid fa-xmark"></i></span>
               <div>
-                <div class="text-[11px] font-semibold text-slate-500">ক্যানসেলড</div>
+                <div class="text-[11px] font-semibold text-slate-500" data-i18n="filter_cancelled">ক্যানসেলড</div>
                 <div id="quickCount-Cancelled" class="text-sm font-black text-slate-900 num leading-tight">০</div>
               </div>
             </div>
@@ -477,7 +551,7 @@
         <div class="grid grid-cols-1 md:grid-cols-12 gap-2">
           <div class="relative md:col-span-6">
             <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-slate-400 text-xs"></i>
-            <input type="text" id="searchInput" oninput="filterOrders()" placeholder="নাম, মোবাইল, এলাকা বা আইডি দিয়ে খুঁজুন..." 
+            <input type="text" id="searchInput" oninput="filterOrders()" placeholder="নাম, মোবাইল, এলাকা বা আইডি দিয়ে খুঁজুন..." data-i18n-ph="search_placeholder" 
               class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-9 pr-3 py-2 text-xs outline-none focus:border-sky-600 focus:bg-white transition" />
           </div>
 
@@ -533,12 +607,12 @@
           <table class="w-full text-left text-xs">
             <thead class="bg-sky-50/70 border-b border-sky-100 text-slate-600 uppercase text-[10px] font-extrabold tracking-wider">
               <tr>
-                <th class="p-3.5">আইডি ও সময়</th>
-                <th class="p-3.5">কাস্টমার ও ঠিকানা</th>
+                <th class="p-3.5" data-i18n="th_id_time">আইডি ও সময়</th>
+                <th class="p-3.5" data-i18n="th_customer_address">কাস্টমার ও ঠিকানা</th>
                 <th class="p-3.5">প্রোডাক্ট ও প্যাকেজ</th>
                 <th class="p-3.5">মোট মূল্য</th>
-                <th class="p-3.5 text-center">কুরিয়ার ও যোগাযোগ</th>
-                <th class="p-3.5 text-right">শিপিং স্ট্যাটাস</th>
+                <th class="p-3.5 text-center" data-i18n="th_courier_contact">কুরিয়ার ও যোগাযোগ</th>
+                <th class="p-3.5 text-right" data-i18n="th_shipping_status">শিপিং স্ট্যাটাস</th>
               </tr>
             </thead>
             <tbody id="orderTableBody" class="divide-y divide-slate-100 font-medium">
@@ -566,7 +640,215 @@
   <script>
     // Live Cloudflare Worker configured for Ghash Foring (GS)
     const WORKER_URL = "https://fancy-water-9087.azwadprogramming.workers.dev"; 
-    const PASSWORD = "admin123"; 
+    const PASSWORD = "admin123";
+
+    // ================= 🌐 BILINGUAL TRANSLATION (A to Z English <-> Bangla) =================
+    const I18N = {
+      bn: {
+        lang_btn: "🇬🇧 English",
+        lang_flag: "🇬🇧",
+        lang_text: "English",
+        sidebar_val: "বাংলা",
+        lang_label: "ভাষা / Language",
+        nav_dashboard: "ড্যাশবোর্ড",
+        nav_manual_order: "নতুন ম্যানুয়াল অর্ডার",
+        nav_settings: "সেটিংস (API & Pixel)",
+        nav_export_excel: "এক্সেল / CSV ডাউনলোড",
+        btn_new_order: "নতুন অর্ডার",
+        login_subtitle: "ড্যাশবোর্ড অ্যাক্সেস করতে পাসওয়ার্ড দিন",
+        pass_placeholder: "পাসওয়ার্ড লিখুন...",
+        btn_login: "প্রবেশ করুন",
+        err_wrong_pass: "ভুল পাসওয়ার্ড!",
+        stat_total_sales: "ফিল্টার মোট সেলস",
+        stat_order_count: "অর্ডার কাউন্ট:",
+        stat_unit: "টি",
+        stat_confirmed: "কনফার্মড অর্ডার",
+        stat_value: "মূল্য:",
+        stat_courier_shipped: "কুরিয়ার শিপড",
+        stat_in_transit: "ডেলিভারি প্রক্রিয়ায় আছে",
+        stat_cancelled: "বাতিলকৃত",
+        stat_loss: "লস:",
+        filter_all: "সব অর্ডার",
+        filter_pending: "প্রসেসিং",
+        filter_confirmed: "কনফার্মড",
+        filter_shipped: "শিপড",
+        filter_delivered: "ডেলিভার্ড",
+        filter_cancelled: "ক্যানসেলড",
+        search_placeholder: "নাম, মোবাইল, এলাকা বা আইডি দিয়ে খুঁজুন...",
+        date_all: "📅 সব সময়ের অর্ডার",
+        date_today: "✨ আজকের অর্ডার (Today)",
+        date_yesterday: "গতকালকের অর্ডার",
+        date_7days: "বিগত ৭ দিন",
+        status_all: "⚡ সকল স্ট্যাটাস",
+        status_pending: "🟡 প্রসেসিং",
+        status_confirmed: "🔵 কনফার্মড",
+        status_shipped: "🟣 শিপড",
+        status_delivered: "🟢 ডেলিভার্ড",
+        status_cancelled: "🔴 বাতিল",
+        th_id_time: "আইডি ও সময়",
+        th_customer_address: "কাস্টমার ও ঠিকানা",
+        th_package: "প্যাকেজ",
+        th_total_bill: "মোট বিল",
+        th_courier_contact: "কুরিয়ার ও যোগাযোগ",
+        th_shipping_status: "শিপিং স্ট্যাটাস",
+        table_title: "Ghash Foring (GS) অর্ডার তালিকা",
+        no_orders: "${t('no_orders')}",
+        btn_steps: "ধাপ",
+        btn_send_steadfast: "SteadFast এ পাঠান",
+        modal_shipping_title: "Ghash Foring শিপিং ট্র্যাকিং ও ধাপ",
+        step_placed: "অর্ডার গৃহীত",
+        step_confirmed: "অর্ডার কনফার্মড",
+        step_packed: "প্যাকেজিং ও রেডি",
+        step_shipped: "কুরিয়ারে হস্তান্তর",
+        step_delivered: "ডেলিভারি সম্পন্ন",
+        modal_step_to: "এটিতে নিন",
+        btn_close: "বন্ধ করুন",
+        modal_new_order_title: "নতুন ম্যানুয়াল অর্ডার (Ghash Foring)",
+        lbl_cust_name: "কাস্টমারের নাম",
+        lbl_cust_phone: "মোবাইল নাম্বার",
+        lbl_cust_address: "সম্পূর্ণ ডেলিভারি ঠিকানা",
+        lbl_package: "প্যাকেজ / পরিমাণ",
+        lbl_area: "ডেলিভারি এলাকা",
+        lbl_total: "সর্বমোট বিল (৳)",
+        btn_confirm_order: "অর্ডার কনফার্ম ও সেভ করুন",
+        modal_settings_title: "Ghash Foring (GS) কনফিগারেশন",
+        btn_save_settings: "সেটিংস সংরক্ষণ করুন"
+      },
+      en: {
+        lang_btn: "🇧🇩 বাংলা",
+        lang_flag: "🇧🇩",
+        lang_text: "বাংলা",
+        sidebar_val: "English",
+        lang_label: "Language",
+        nav_dashboard: "Dashboard",
+        nav_manual_order: "New Manual Order",
+        nav_settings: "Settings (API & Pixel)",
+        nav_export_excel: "Export Excel / CSV",
+        btn_new_order: "New Order",
+        login_subtitle: "Enter password to access dashboard",
+        pass_placeholder: "Enter password...",
+        btn_login: "Login",
+        err_wrong_pass: "Incorrect password!",
+        stat_total_sales: "Filtered Total Sales",
+        stat_order_count: "Order Count:",
+        stat_unit: "pcs",
+        stat_confirmed: "Confirmed Orders",
+        stat_value: "Value:",
+        stat_courier_shipped: "Courier Shipped",
+        stat_in_transit: "In delivery transit",
+        stat_cancelled: "Cancelled",
+        stat_loss: "Loss:",
+        filter_all: "All Orders",
+        filter_pending: "Processing",
+        filter_confirmed: "Confirmed",
+        filter_shipped: "Shipped",
+        filter_delivered: "Delivered",
+        filter_cancelled: "Cancelled",
+        search_placeholder: "Search by Name, Phone, Address or ID...",
+        date_all: "📅 All Time Orders",
+        date_today: "✨ Today's Orders",
+        date_yesterday: "Yesterday's Orders",
+        date_7days: "Last 7 Days",
+        status_all: "⚡ All Statuses",
+        status_pending: "🟡 Processing",
+        status_confirmed: "🔵 Confirmed",
+        status_shipped: "🟣 Shipped",
+        status_delivered: "🟢 Delivered",
+        status_cancelled: "🔴 Cancelled",
+        th_id_time: "ID & TIME",
+        th_customer_address: "CUSTOMER & ADDRESS",
+        th_package: "PACKAGE",
+        th_total_bill: "TOTAL BILL",
+        th_courier_contact: "COURIER & CONTACT",
+        th_shipping_status: "SHIPPING STATUS",
+        table_title: "Ghash Foring (GS) Orders List",
+        no_orders: "No orders found!",
+        btn_steps: "Steps",
+        btn_send_steadfast: "Send to SteadFast",
+        modal_shipping_title: "Ghash Foring Shipping Tracking & Steps",
+        step_placed: "Order Placed",
+        step_confirmed: "Order Confirmed",
+        step_packed: "Packaging & Ready",
+        step_shipped: "Handed over to Courier",
+        step_delivered: "Delivered Successfully",
+        modal_step_to: "Set to this",
+        btn_close: "Close",
+        modal_new_order_title: "New Manual Order (Ghash Foring)",
+        lbl_cust_name: "Customer Name",
+        lbl_cust_phone: "Phone Number",
+        lbl_cust_address: "Full Delivery Address",
+        lbl_package: "Package / Quantity",
+        lbl_area: "Delivery Area",
+        lbl_total: "Total Bill (৳)",
+        btn_confirm_order: "Confirm & Save Order",
+        modal_settings_title: "Ghash Foring (GS) Configuration",
+        btn_save_settings: "Save Settings"
+      }
+    };
+
+    let currentLang = localStorage.getItem('admin_lang') || 'bn';
+
+    function t(key) {
+      const dict = I18N[currentLang] || I18N.bn;
+      return dict[key] || key;
+    }
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'bn' ? 'en' : 'bn';
+      localStorage.setItem('admin_lang', currentLang);
+      applyLanguage();
+    }
+
+    function applyLanguage() {
+      const dict = I18N[currentLang] || I18N.bn;
+      
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const k = el.getAttribute('data-i18n');
+        if (dict[k]) el.innerText = dict[k];
+      });
+
+      document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+        const k = el.getAttribute('data-i18n-ph');
+        if (dict[k]) el.placeholder = dict[k];
+      });
+
+      const flagEl = document.getElementById('langFlag');
+      const textEl = document.getElementById('langText');
+      if (flagEl && textEl) {
+        flagEl.innerText = dict.lang_flag;
+        textEl.innerText = dict.lang_text;
+      }
+
+      const sideVal = document.getElementById('sidebarLangVal');
+      if (sideVal) sideVal.innerText = dict.sidebar_val;
+
+      const dateSel = document.getElementById('dateFilter');
+      if (dateSel) {
+        const val = dateSel.value;
+        dateSel.options[0].text = dict.date_all;
+        dateSel.options[1].text = dict.date_today;
+        dateSel.options[2].text = dict.date_yesterday;
+        dateSel.options[3].text = dict.date_7days;
+        dateSel.value = val;
+      }
+
+      const statSel = document.getElementById('statusFilter');
+      if (statSel) {
+        const val = statSel.value;
+        statSel.options[0].text = dict.status_all;
+        statSel.options[1].text = dict.status_pending;
+        statSel.options[2].text = dict.status_confirmed;
+        statSel.options[3].text = dict.status_shipped;
+        statSel.options[4].text = dict.status_delivered;
+        statSel.options[5].text = dict.status_cancelled;
+        statSel.value = val;
+      }
+
+      if (typeof filterOrders === 'function') {
+        filterOrders();
+      }
+    }
+ 
 
     let allOrders = [];
     let currentQuickStatus = 'ALL';
@@ -591,19 +873,19 @@
       if (pass === PASSWORD) {
         document.getElementById('loginGate').classList.add('opacity-0', 'pointer-events-none');
         setTimeout(() => document.getElementById('loginGate').classList.add('hidden'), 300);
-        sessionStorage.setItem('isAuth', 'true');
-        loadOrders();
+        localStorage.setItem('isAuth_GS', 'true');
+        applyLanguage(); loadOrders();
       } else {
         document.getElementById('loginError').classList.remove('hidden');
       }
     }
 
     function logout() {
-      sessionStorage.removeItem('isAuth');
+      localStorage.removeItem('isAuth_GS');
       location.reload();
     }
 
-    if (sessionStorage.getItem('isAuth') === 'true') {
+    if (localStorage.getItem('isAuth_GS') === 'true') {
       document.getElementById('loginGate').classList.add('hidden');
       loadOrders();
     }
@@ -625,6 +907,7 @@
 
         filterOrders();
         document.getElementById('lastUpdatedTime').innerText = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+        setTimeout(() => autoCheckAllFraud(allOrders), 100);
       } catch (err) {
         console.error('Fetch orders failed:', err);
         showToast("অর্ডার লোড হতে সমস্যা হয়েছে!");
@@ -831,20 +1114,110 @@
       filterOrders();
     }
 
-    function renderFraudBadge(fraud) {
+    // ================= 🛡️ BDCourier Fraud Risk Checker Engine =================
+    const fraudCache = {};
+    let currentSettings = { bdcourierApiKey: 'T9CuXrpRES28Xf24RlKA2Npu1PweTds4m87U24ahDWgtDmU0BvIeU5jzePuV' };
+
+    function renderFraudBadge(fraud, orderId, phone) {
       if (!fraud || fraud.status !== 'success' || !fraud.data || !fraud.data.summary) {
-        return `<span class="inline-flex items-center gap-1 text-[9px] font-bold text-slate-500 bg-slate-100 border border-slate-200 px-1.5 py-0.5 rounded-md"><i class="fa-solid fa-magnifying-glass"></i> কোনো রেকর্ড নেই</span>`;
+        return `<button onclick="event.stopPropagation(); checkSingleOrderFraud('${orderId}', '${phone}')" id="btn-fraud-${orderId}" class="inline-flex items-center gap-1 text-[9px] font-bold text-sky-700 bg-sky-50 hover:bg-sky-100 border border-sky-200 px-2 py-0.5 rounded-md transition active:scale-95 cursor-pointer" title="BDCourier ফ্রড চেক করুন"><i class="fa-solid fa-magnifying-glass text-[8px]"></i> <span>ফ্রড চেক</span></button>`;
       }
       const s = fraud.data.summary;
       const ratio = s.success_ratio !== undefined ? parseFloat(s.success_ratio) : 0;
       const total = s.total_parcel ?? 0;
       const success = s.success_parcel ?? 0;
+      const hasReports = Array.isArray(fraud.reports) && fraud.reports.length > 0;
 
-      if (ratio >= 70) {
-        return `<span class="inline-flex items-center gap-1 text-[9px] font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-md"><i class="fa-solid fa-circle-check text-emerald-600"></i> ${ratio}% ডেলিভারি রেট (${success}/${total})</span>`;
+      if (hasReports || ratio < 60) {
+        return `<button onclick="event.stopPropagation(); openShippingModal('${orderId}')" class="inline-flex items-center gap-1 text-[9px] font-bold text-rose-700 bg-rose-50 border border-rose-200 px-2 py-0.5 rounded-md cursor-pointer hover:bg-rose-100" title="ঝুঁকিপূর্ণ কাস্টমার! বিস্তারিত দেখতে ক্লিক করুন"><i class="fa-solid fa-triangle-exclamation text-rose-600 text-[8px]"></i> <span>ঝুঁকিপূর্ণ (${ratio}%)</span></button>`;
+      } else if (ratio >= 80) {
+        return `<button onclick="event.stopPropagation(); openShippingModal('${orderId}')" class="inline-flex items-center gap-1 text-[9px] font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-md cursor-pointer hover:bg-emerald-100" title="${total} পার্সেলের মধ্যে ${success}টি ডেলিভার্ড"><i class="fa-solid fa-circle-check text-emerald-600 text-[8px]"></i> <span>${ratio}% রেট (${success}/${total})</span></button>`;
       } else {
-        return `<span class="inline-flex items-center gap-1 text-[9px] font-bold text-rose-700 bg-rose-50 border border-rose-200 px-2 py-0.5 rounded-md"><i class="fa-solid fa-triangle-exclamation text-rose-600"></i> ঝুঁকিপূর্ণ (${ratio}%)</span>`;
+        return `<button onclick="event.stopPropagation(); openShippingModal('${orderId}')" class="inline-flex items-center gap-1 text-[9px] font-bold text-amber-800 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded-md cursor-pointer hover:bg-amber-100" title="${total} পার্সেলের মধ্যে ${success}টি ডেলিভার্ড"><i class="fa-solid fa-circle-info text-amber-600 text-[8px]"></i> <span>${ratio}% রেট (${success}/${total})</span></button>`;
       }
+    }
+
+    async function checkSingleOrderFraud(orderId, phone) {
+      const cleanPhone = String(phone || '').replace(/\D/g, '');
+      if (cleanPhone.length < 11) {
+        showToast("সঠিক মোবাইল নম্বর নেই!");
+        return;
+      }
+      const btn = document.getElementById(`btn-fraud-${orderId}`);
+      if (btn) btn.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin text-[8px]"></i> চেকিং...`;
+
+      try {
+        let fraudData = fraudCache[cleanPhone];
+        if (!fraudData) {
+          const apiKey = currentSettings.bdcourierApiKey || 'T9CuXrpRES28Xf24RlKA2Npu1PweTds4m87U24ahDWgtDmU0BvIeU5jzePuV';
+          const res = await fetch('https://api.bdcourier.com/courier-check', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + apiKey
+            },
+            body: JSON.stringify({ phone: cleanPhone })
+          });
+          fraudData = await res.json();
+          if (fraudData && fraudData.status === 'success') {
+            fraudCache[cleanPhone] = fraudData;
+          }
+        }
+
+        const o = allOrders.find(x => x.orderId === orderId);
+        if (o) o.fraud = fraudData;
+
+        // Update badges in DOM directly
+        const dEl = document.getElementById(`fraud-badge-desktop-${orderId}`);
+        if (dEl) dEl.innerHTML = renderFraudBadge(fraudData, orderId, cleanPhone);
+        const mEl = document.getElementById(`fraud-badge-mobile-${orderId}`);
+        if (mEl) mEl.innerHTML = renderFraudBadge(fraudData, orderId, cleanPhone);
+
+        showToast("✅ ফ্রড ডাটা আপডেট হয়েছে!");
+      } catch (e) {
+        console.error('Fraud check error:', e);
+        if (btn) btn.innerHTML = `<i class="fa-solid fa-triangle-exclamation text-rose-500"></i> ব্যর্থ`;
+      }
+    }
+
+    async function autoCheckAllFraud(orders) {
+      const apiKey = currentSettings.bdcourierApiKey || 'T9CuXrpRES28Xf24RlKA2Npu1PweTds4m87U24ahDWgtDmU0BvIeU5jzePuV';
+      if (!apiKey) return;
+      for (const o of orders) {
+        if (!o.fraud) {
+          const cleanPhone = String(o.phone || '').replace(/\D/g, '');
+          if (cleanPhone.length >= 11) {
+            try {
+              if (fraudCache[cleanPhone]) {
+                o.fraud = fraudCache[cleanPhone];
+                updateOrderFraudDOM(o.orderId, o.fraud, cleanPhone);
+              } else {
+                const res = await fetch('https://api.bdcourier.com/courier-check', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + apiKey
+                  },
+                  body: JSON.stringify({ phone: cleanPhone })
+                });
+                const fd = await res.json();
+                if (fd && fd.status === 'success') {
+                  fraudCache[cleanPhone] = fd;
+                  o.fraud = fd;
+                  updateOrderFraudDOM(o.orderId, fd, cleanPhone);
+                }
+              }
+            } catch (err) {}
+          }
+        }
+      }
+    }
+
+    function updateOrderFraudDOM(orderId, fraud, phone) {
+      const dEl = document.getElementById(`fraud-badge-desktop-${orderId}`);
+      if (dEl) dEl.innerHTML = renderFraudBadge(fraud, orderId, phone);
+      const mEl = document.getElementById(`fraud-badge-mobile-${orderId}`);
+      if (mEl) mEl.innerHTML = renderFraudBadge(fraud, orderId, phone);
     }
 
     function renderSteadfastBadge(o) {
@@ -919,7 +1292,7 @@
       document.getElementById('filteredCountBadge').innerText = orders.length;
 
       if (!orders.length) {
-        tbody.innerHTML = `<tr><td colspan="6" class="text-center py-12 text-slate-400 font-semibold">কোনো অর্ডার পাওয়া যায়নি!</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="6" class="text-center py-12 text-slate-400 font-semibold">${t('no_orders')}</td></tr>`;
         return;
       }
 
@@ -940,8 +1313,8 @@
             <div class="font-bold text-slate-900 text-xs">${o.name}</div>
             <div class="text-[11px] text-slate-500 truncate" title="${o.address}">${o.address}</div>
             <div class="mt-1 flex items-center gap-1.5 flex-wrap">
-              <span class="text-[10px] font-bold text-slate-700 num"><i class="fa-solid fa-phone text-[9px] mr-1 text-slate-400"></i>${o.phone}</span>
-              ${renderFraudBadge(o.fraud)}
+              <span class="text-[10px] font-bold text-slate-700 num bg-slate-100 px-2 py-0.5 rounded-md"><i class="fa-solid fa-phone text-[9px] mr-1 text-slate-400"></i>${o.phone}</span>
+              <span id="fraud-badge-desktop-${o.orderId}">${renderFraudBadge(o.fraud, o.orderId, o.phone)}</span>
             </div>
           </td>
 
@@ -998,7 +1371,7 @@
         <div class="bg-white border border-sky-100 rounded-2xl p-4 shadow-sm space-y-3">
           <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
             <div>
-              <span class="font-extrabold text-sky-950 num text-sm">#${o.orderId || 'N/A'}</span>
+              <button onclick="openShippingModal('${o.orderId}')" class="font-extrabold text-sky-950 hover:underline num text-sm text-left flex items-center gap-1.5 cursor-pointer" title="শিপিং স্ট্যাটাস দেখুন"><span>#${o.orderId || 'N/A'}</span> <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-sky-600"></i></button>
               <div class="text-[10px] text-slate-400">${o.time || ''}</div>
             </div>
             <select onchange="updateOrderStatus('${o.orderId}', this.value)" class="text-xs font-bold border rounded-xl px-2.5 py-1 outline-none ${getStatusBadge(o.status)}">
@@ -1018,7 +1391,7 @@
             <div class="text-xs text-slate-500 mt-0.5 leading-relaxed">${o.address}</div>
             <div class="mt-2 flex items-center gap-1.5 flex-wrap">
               <span class="text-[11px] font-bold text-slate-700 num bg-slate-100 px-2 py-0.5 rounded-md"><i class="fa-solid fa-phone text-[9px] mr-1 text-slate-400"></i>${o.phone}</span>
-              ${renderFraudBadge(o.fraud)}
+              <span id="fraud-badge-mobile-${o.orderId}">${renderFraudBadge(o.fraud, o.orderId, o.phone)}</span>
             </div>
           </div>
 
@@ -1049,7 +1422,7 @@
             </div>
 
             <button onclick="openShippingModal('${o.orderId}')" class="px-3 py-1.5 bg-sky-50 hover:bg-sky-100 text-sky-900 font-bold text-xs rounded-xl flex items-center gap-1.5 transition">
-              <i class="fa-solid fa-route text-sky-600"></i> শিপিং স্টেপস
+              <i class="fa-solid fa-route text-sky-600"></i> <span>${t('btn_steps')}</span>
             </button>
           </div>
         </div>`;
@@ -1152,6 +1525,40 @@
         `;
       }
 
+      
+      // Populate Fraud Details in Modal
+      const fraudBox = document.getElementById('stepModalFraudBox');
+      const fraudBadgeEl = document.getElementById('stepModalFraudBadge');
+      const fraudDetailsEl = document.getElementById('stepModalFraudDetails');
+      if (fraudBadgeEl && fraudDetailsEl) {
+        if (o.fraud && o.fraud.status === 'success' && o.fraud.data && o.fraud.data.summary) {
+          const sm = o.fraud.data.summary;
+          const ratio = parseFloat(sm.success_ratio || 0);
+          const totalP = sm.total_parcel || 0;
+          const successP = sm.success_parcel || 0;
+          const cancelP = sm.cancelled_parcel || 0;
+          const reps = o.fraud.reports || [];
+
+          fraudBadgeEl.innerHTML = renderFraudBadge(o.fraud, o.orderId, o.phone);
+          fraudDetailsEl.innerHTML = `
+            <div class="grid grid-cols-3 gap-2 text-center py-1">
+              <div class="bg-white p-2 rounded-xl border border-slate-200"><span class="block text-slate-400 text-[10px]">মোট পার্সেল</span><strong class="text-slate-900 num font-black">${totalP}</strong></div>
+              <div class="bg-white p-2 rounded-xl border border-slate-200"><span class="block text-emerald-600 text-[10px]">সফল ডেলিভারি</span><strong class="text-emerald-700 num font-black">${successP}</strong></div>
+              <div class="bg-white p-2 rounded-xl border border-slate-200"><span class="block text-rose-500 text-[10px]">ক্যানসেল</span><strong class="text-rose-600 num font-black">${cancelP}</strong></div>
+            </div>
+            ${reps.length > 0 ? `
+              <div class="mt-2 p-2.5 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 text-[11px] space-y-1">
+                <div class="font-bold flex items-center gap-1 text-rose-900"><i class="fa-solid fa-triangle-exclamation"></i> ${reps.length}টি অভিযোগ পাওয়া গেছে:</div>
+                ${reps.slice(0, 2).map(r => `<div class="text-[10px] bg-white/70 p-1.5 rounded-lg leading-tight">"${r.details || 'অভিযোগ'}" (${r.courierName || 'Courier'})</div>`).join('')}
+              </div>
+            ` : `<div class="text-[10px] text-emerald-700 mt-1"><i class="fa-solid fa-check text-xs"></i> কোনো কুরিয়ারে নেগেティブ রিপোর্ট নেই।</div>`}
+          `;
+        } else {
+          fraudBadgeEl.innerHTML = `<button onclick="checkSingleOrderFraud('${o.orderId}', '${o.phone}'); setTimeout(() => openShippingModal('${o.orderId}'), 1500);" class="text-[10px] bg-sky-600 hover:bg-sky-700 text-white font-bold px-2.5 py-1 rounded-lg shadow-xs"><i class="fa-solid fa-magnifying-glass"></i> এখনই ফ্রড চেক করুন</button>`;
+          fraudDetailsEl.innerHTML = `<span class="text-slate-400 italic">বিডিকুরিয়ারে এই নম্বরের কোনো তথ্য এখনো চেক করা হয়নি। উপরের বাটনে চাপ দিন।</span>`;
+        }
+      }
+
       document.getElementById('shippingModal').classList.remove('hidden');
     }
 
@@ -1214,7 +1621,7 @@
     function updateManualPrice() {
       const pkgSelect = document.getElementById('mPackage');
       const areaSelect = document.getElementById('mArea');
-      const pPrice = parseInt(pkgSelect.options[pkgSelect.selectedIndex].dataset.price || '1149', 10);
+      const pPrice = parseInt(pkgSelect.options[pkgSelect.selectedIndex].dataset.price || '1190', 10);
       const deliveryCharge = parseInt(areaSelect.options[areaSelect.selectedIndex].dataset.charge || '80', 10);
       document.getElementById('mTotalBill').value = `৳${pPrice + deliveryCharge}`;
     }
